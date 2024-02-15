@@ -1,0 +1,165 @@
+sede_id,sede_desc_ingles,pais_iso_3,pais_ingles,ciudad_ingles,estado,sede_tipo
+CALEG,Consulate  General  in  PORTO  ALEGRE,BRA,FEDERATIVE  REPUBLIC  OF  BRAZIL,Porto  Alegre,Activo,Consulado
+CANTO,Consulate  in  ANTOFAGASTA,CHL,REPUBLIC  OF  CHILE,Antofagasta,Activo,Consulado
+CAREN,Consulate  General  in  Punta  Arenas,CHL,REPUBLIC  OF  CHILE,Punta  Arenas,Activo,Consulado
+CASUN,Consulate  General  in  Asuncion,PRY,REPUBLIC  OF  PARAGUAY,Asuncion,Activo,Consulado
+CATLA,Consulate  General  in  Atlanta,USA,UNITED  STATES  OF  AMERICA,Atlanta,Activo,Consulado
+CBARC,Consulate  General  and  Promotion  Center  in  Barcelona,ESP,KINGDOM  OF  SPAIN,Barcelona,Activo,Consulado  General  y  Centro  de  Promoción 
+CBEIJ,Consular  Section  in  Beijing,CHN,PEOPLE’S  REPUBLIC  OF  CHINA,Beijing,Activo,Consulado
+CBELO,Consulate  in  Belo  Horizonte,BRA,FEDERATIVE  REPUBLIC  OF  BRAZIL,Belo  Horizonte,Activo,Consulado
+CBONN,Consulate  in  Bonn,DEU,FEDERAL  REPUBLIC  OF  GERMANY,Bonn,Activo,Consulado
+CCADI,Consulate  in  Cadiz,ESP,KINGDOM  OF  SPAIN,Cadiz,Activo,Consulado
+CCEST,Consulate  General  in  Ciudad  del  Este,PRY,REPUBLIC  OF  PARAGUAY,Ciudad  del  Este,Activo,Consulado
+CCHIC,Consulate  General  in  Chicago,USA,UNITED  STATES  OF  AMERICA,Chicago,Activo,Consulado
+CCOCH,Consulate  in  Cochabamba,BOL,PLURINATIONAL  STATE  OF  BOLIVIA,Cochabamba,Activo,Consulado
+CCOLO,Consulate  in  Colonia,URY,REPUBLIC  OF  URUGUAY,Colonia,Activo,Consulado
+CCONC,Consulate  in  Concepcion,CHL,REPUBLIC  OF  CHILE,Concepcion,Activo,Consulado
+CCURI,Consulate  in  Curitiba,BRA,FEDERATIVE  REPUBLIC  OF  BRAZIL,Curitiba,Activo,Consulado
+CENCA,Consulate  General  in  Encarnacion,PRY,REPUBLIC  OF  PARAGUAY,Encarnacion,Activo,Consulado
+CFBEN,Consulate  in  Fray  Bentos,URY,REPUBLIC  OF  URUGUAY,Fray  Bentos,Activo,Consulado
+CFDIG,Consulate  in  Foz  do  Iguacu,BRA,FEDERATIVE  REPUBLIC  OF  BRAZIL,Foz  do  Iguacu,Activo,Consulado
+CFLOR,Consulate  in  Florianopolis,BRA,FEDERATIVE  REPUBLIC  OF  BRAZIL,Florianopolis,Activo,Consulado
+CFRAN,Consulate  General  and  Promotion  Center  in  Frankfurt,DEU,FEDERAL  REPUBLIC  OF  GERMANY,Frankfurt,Activo,Consulado  General  y  Centro  de  Promoción 
+CGEST,Consulate  General  and  Promotion  Center  in  Istambul,TUR,REPUBLIC  OF  TÜRKIYE,Istambul,Activo,Consulado  General  y  Centro  de  Promoción 
+CGMUM,Consulate  General  and  Promotion  Center  in  Mumbai,IND,REPUBLIC  OF  INDIA,Mumbai,Activo,Consulado  General  y  Centro  de  Promoción 
+CGPAZ,Consulate  General  in  La  Paz,BOL,PLURINATIONAL  STATE  OF  BOLIVIA,La  Paz,Activo,Consulado
+CGTEL,Consulate  General  in  Tel  Aviv,ISR,STATE  OF  ISRAEL,Tel  Aviv,Activo,Consulado
+CGUAN,Consulate  General  in  Guangzhou,CHN,PEOPLE’S  REPUBLIC  OF  CHINA,Guangzhou,Activo,Consulado
+CGUAY,Consulate  in  Guayaquil,ECU,REPUBLIC  OF  ECUADOR,Guayaquil,Activo,Consulado
+CGVAN,Consulate  General  in  Vancouver,CAN,CANADA,Vancouver,Activo,Consulado
+CHAMB,Consulate  General  in  Hamburg,DEU,FEDERAL  REPUBLIC  OF  GERMANY,Hamburg,Activo,Consulado
+CHONG,Consulate  General  in  Hong  Kong,CHN,PEOPLE’S  REPUBLIC  OF  CHINA,Hong  Kong,Activo,Consulado
+CHOUS,Consulate  General  in  Houston,USA,UNITED  STATES  OF  AMERICA,Houston,Activo,Consulado
+CJOHA,Consulate  General  in  Johannesburg,ZAF,REPUBLIC  OF  SOUTH  AFRICA,Johannesburg,Activo,Consulado
+CLANG,Consulate  General  and  Promotion  Center  in  Los  Angeles,USA,UNITED  STATES  OF  AMERICA,Los  Angeles,Activo,Consulado  General  y  Centro  de  Promoción 
+CLIMA,Consulate  General  in  Lima,PER,REPUBLIC  OF  PERU,Lima,Activo,Consulado
+CLOND,Consulate  General  in  London,GRB,UNITED  KINGDOM  OF  GREAT  BRITAIN  AND  NORTHERN  IRELAND,London  ,Activo,Consulado
+CMADR,Consulate  General  in  Madrid,ESP,KINGDOM  OF  SPAIN,Madrid,Activo,Consulado
+CMALD,Consulate  in  Maldonado,URY,REPUBLIC  OF  URUGUAY,Maldonado,Activo,Consulado
+CMALL,Consulate  in  Palma,ESP,KINGDOM  OF  SPAIN,Palma,Activo,Consulado
+CMDEO,Consulate  General  in  Montevideo,URY,REPUBLIC  OF  URUGUAY,Montevideo,Activo,Consulado
+CMEXI,Consulate  General  in  Mexico,MEX,UNITED  MEXICAN  STATES,Mexico,Activo,Consulado
+CMIAM,Consulate  General  and  Promotion  Center  in  Miami,USA,UNITED  STATES  OF  AMERICA,Miami,Activo,Consulado  General  y  Centro  de  Promoción 
+CMILA,Consulate  General  and  Promotion  Center  in  Milan,ITA,ITALIAN  REPUBLIC,Milan,Activo,Consulado  General  y  Centro  de  Promoción 
+CMREA,Consulate  General  in  Montreal,CAN,CANADA,Montreal,Activo,Consulado
+CNYOR,Consulate  General  and  Promotion  Center  in  New  York,USA,UNITED  STATES  OF  AMERICA,New  York,Activo,Consulado  General  y  Centro  de  Promoción 
+CPABL,Consulate  General  and  Promotion  Center  in  Sao  Paolo,BRA,FEDERATIVE  REPUBLIC  OF  BRAZIL,Sao  Paolo,Activo,Consulado  General  y  Centro  de  Promoción 
+CPAYS,Consulate  in  Paysandu,URY,REPUBLIC  OF  URUGUAY,Paysandu,Activo,Consulado
+CPCAR,Consulate  in  Playa  del  Carmen,MEX,UNITED  MEXICAN  STATES,Playa  del  Carmen,Activo,Consulado
+CPMON,Consulate  in  Puerto  Montt,CHL,REPUBLIC  OF  CHILE,Puerto  Montt,Activo,Consulado
+CRECI,Consulate  in  Recife,BRA,FEDERATIVE  REPUBLIC  OF  BRAZIL,Recife,Activo,Consulado
+CRIOJ,Consulate  General  in  Rio  de  Janeiro,BRA,FEDERATIVE  REPUBLIC  OF  BRAZIL,Rio  de  Janeiro,Activo,Consulado
+CROMA,Consulate  General  in  Rome,ITA,ITALIAN  REPUBLIC,Rome,Activo,Consulado
+CSBAH,Consulate  in  Sao  Salvador  de  Bahia,BRA,FEDERATIVE  REPUBLIC  OF  BRAZIL,Sao  Salvador  de  Bahia,Activo,Consulado
+CSCRS,Consulate  General  and  Promotion  Center  in  Santa  Cruz,BOL,PLURINATIONAL  STATE  OF  BOLIVIA,Santa  Cruz,Activo,Consulado  General  y  Centro  de  Promoción 
+CSHAN,Consulate  General  and  Promotion  Center  in  Shangai,CHN,PEOPLE’S  REPUBLIC  OF  CHINA,Shanghái,Activo,Consulado  General  y  Centro  de  Promoción 
+CSIDN,Consulate  General  in  Sydney,AUS,AUSTRALIA,Sydney,Activo,Consulado
+CSIGO,Consulate  General  in  Santiago,CHL,REPUBLIC  OF  CHILE,Santiago,Activo,Consulado
+CSLTO,Consulate  in  Salto,URY,REPUBLIC  OF  URUGUAY,Salto,Activo,Consulado
+CTARI,Consulate  General  in  Tarija,BOL,PLURINATIONAL  STATE  OF  BOLIVIA,Tarija,Activo,Consulado
+CTENE,Consulate  in  Tenerife,ESP,KINGDOM  OF  SPAIN,Tenerife,Activo,Consulado
+CTORO,Consulate  General  in  Toronto,CAN,CANADA,Toronto,Activo,Consulado
+CURUG,Consulate  in  Uruguayana,BRA,FEDERATIVE  REPUBLIC  OF  BRAZIL,Uruguayana,Activo,Consulado
+CVALP,Consulate  General  in  Valparaiso,CHL,REPUBLIC  OF  CHILE,Valparaiso,Activo,Consulado
+CVIGO,Consulate  General  in  Vigo,ESP,KINGDOM  OF  SPAIN,Vigo,Activo,Consulado
+CVILL,Consulate  in  Villazon,BOL,PLURINATIONAL  STATE  OF  BOLIVIA,Villazon,Activo,Consulado
+CYACU,Consulate  in  Yacuiba,BOL,PLURINATIONAL  STATE  OF  BOLIVIA,Yacuiba,Activo,Consulado
+DIGAC,Argentines  abroad,ARG,ARGENTINE  REPUBLIC,Argentines  abroad,Activo,Sede  Fija 
+EALEM,Embassy  in  GERMANY,DEU,FEDERAL  REPUBLIC  OF  GERMANY,Berlin,Activo,Embajada
+EANGO,Embassy  in  Angola,AGO,REPUBLIC  OF  ANGOLA,Luanda  ,Activo,Embajada
+EARAB,Embassy  in  Saudi  Arabia,SAU,KINGDOM  OF  SAUDI  ARABIA,Riyad,Activo,Embajada
+EARGE,Embassy  in  Algeria,DZA,PEOPLE’S  DEMOCRATIC  REPUBLIC  OF  ALGERIA,Algiers,Activo,Embajada
+EARME,Embassy  in  Armenia,ARM,REPUBLIC  OF  ARMENIA,Yerevan,Activo,Embajada
+EASIR,Embassy  in  Syria,SYR,SYRIAN  ARAB  REPUBLIC,Damasco,Activo,Embajada
+EAUST,Embassy  in  Australia,AUS,AUSTRALIA,Canberra,Activo,Embajada
+EAZER,Embassy  in  Azerbaijan,AZE,REPUBLIC  OF  AZERBAIJAN,Baku,Activo,Embajada
+EBANG,Embassy  in  Bangladesh,BGD,PEOPLE’S  REPUBLIC  OF  BANGLADESH,Daca,Activo,Embajada
+EBARB,Embassy  in  Barbados,BRB,BARBADOS,Bridgetown,Activo,Embajada
+EBELG,Embassy  in  Belgium,BEL,KINGDOM  OF  BELGIUM,Brussels,Activo,Embajada
+EBOLV,Embassy  in  Bolivia,BOL,PLURINATIONAL  STATE  OF  BOLIVIA,La  Paz,Activo,Embajada
+EBRAS,Embassy  in  Brazil,BRA,FEDERATIVE  REPUBLIC  OF  BRAZIL,Brasilia,Activo,Embajada
+EBULG,Embassy  in  Bulgaria,BGR,REPUBLIC  OF  BULGARIA,Sofia,Activo,Embajada
+ECANA,Embassy  in  Canada,CAN,CANADA,Ottawa,Activo,Embajada
+ECEUR,Embassy  to  the  European  Union,BEL,KINGDOM  OF  BELGIUM,Brussels,Activo,Misión  Permanente 
+ECHES,Embassy  in  Czechia,CZE,CZECH  REPUBLIC,Prague,Activo,Embajada
+ECHIN,Embassy  in  China,CHN,PEOPLE’S  REPUBLIC  OF  CHINA,Beijing,Activo,Embajada
+ECOLO,Embassy  in  Colombia,COL,REPUBLIC  OF  COLOMBIA,Bogota,Activo,Embajada
+ECORE,Embassy  in  South  Korea,KOR,REPUBLIC  OF  KOREA,Seoul,Activo,Embajada
+ECUBA,Embassy  in  Cuba,CUB,REPUBLIC  OF  CUBA,Havanna,Activo,Embajada
+EDINA,Embassy  in  Danmark,DNK,KINGDOM  OF  DANMARK,Copenhagen,Activo,Embajada
+EDOMI,Embassy  in  Dominican  Republic,DOM,DOMINICAN  REPUBLIC,Santo  Domingo,Activo,Embajada
+EEARB,Embassy  in  the  United  Arab  Emirates,ARE,UNITED  ARAB  EMIRATES,Abu  Dhabi,Activo,Embajada
+EECUA,Embassy  in  Ecuador,ECU,REPUBLIC  OF  ECUADOR,Quito,Activo,Embajada
+EEEUU,Embassy  in  United  States,USA,UNITED  STATES  OF  AMERICA,Washington,Activo,Embajada
+EEGIP,Embassy  in  Egypt,EGY,ARAB  REPUBLIC  OF  EGYPT,El  Cairo,Activo,Embajada
+EEOEA,Permanent  Mission  to  the  Organization  of  American  States,USA,UNITED  STATES  OF  AMERICA,Washington,Activo,Misión  Permanente 
+EESPA,Embassy  in  Spain,ESP,KINGDOM  OF  SPAIN,Madrid,Activo,Embajada
+EETIO,Embassy  in  Ethiopia,ETH,FEDERAL  DEMOCRATIC  REPUBLIC  OF  ETHIOPIA,Addis  Ababa,Activo,Embajada
+EFILI,Embassy  in  the  Philippines,PHL,REPUBLIC  OF  THE  PHILIPPINES,Manila,Activo,Embajada
+EFINL,Embassy  in  Finland,FIN,REPUBLIC  OF  FINLAND,Helsinki,Activo,Embajada
+EFRAN,Embassy  in  France,FRA,FRENCH  REPUBLIC,Paris,Activo,Embajada
+EFRUS,Embassy  in  Russia,RUS,RUSSIAN  FEDERATION,Moscow,Activo,Embajada
+EGREC,Embassy  in  Greece,GRC,HELLENIC  REPUBLIC,Athens,Activo,Embajada
+EGUAT,Embassy  in  Guatemala,GTM,REPUBLIC  OF  GUATEMALA,Guatemala,Activo,Embajada
+EGUYA,Embassy  in  Guyana,GUY,GUYANA,Georgetown,Activo,Embajada
+EHAIT,Embassy  in  Haiti,HTI,REPUBLIC  OF  HAITI,Port-au-Prince,Activo,Embajada
+EHILE,Embassy  in  Chile,CHL,REPUBLIC  OF  CHILE,Santiago,Activo,Embajada
+EHOND,Embassy  in  Honduras,HND,REPUBLIC  OF  HONDURAS,Tegucigalpa,Activo,Embajada
+EINDI,Embassy  in  India,IND,REPUBLIC  OF  INDIA,New  Delhi,Activo,Embajada
+EIRAN,Embassy  in  Iran,IRN,ISLAMIC  REPUBLIC  OF  IRAN,Teheran,Activo,Embajada
+EIRLA,Embassy  in  Irlanda,IRL,IRELAND,Dublin,Activo,Embajada
+EISIA,Embassy  in  Indonesia,IDN,REPUBLIC  OF  INDONESIA,Jakarta,Activo,Embajada
+EISRA,Embassy  in  Israel,ISR,STATE  OF  ISRAEL,Tel  Aviv,Activo,Embajada
+EITAL,Embassy  in  Italy,ITA,ITALIAN  REPUBLIC,Rome,Activo,Embajada
+EJAMA,Embassy  in  Jamaica,JAM,JAMAICA,Kingston,Activo,Embajada
+EJAPO,Embassy  in  Japan,JPN,JAPAN,Tokyo,Activo,Embajada
+EKENY,Embassy  in  Kenya,KEN,REPUBLIC  OF  KENYA,Nairobi,Activo,Embajada
+EKUWA,Embassy  in  Kuwait,KWT,STATE  OF  KUWAIT,Kuwait,Activo,Embajada
+ELBIA,Embassy  in  Libya,LBY,STATE  OF  LIBYA,Tripoli,Activo,Embajada
+ELBNO,Embassy  in  Lebanon,LBN,LEBANESE  REPUBLIC,Beirut,Activo,Embajada
+ELUCI,Embassy  in  Saint  Lucia,LCA,SAINT  LUCIA,Castries,Inactivo,Embajada
+EMARR,Embassy  in  Morocco,MAR,KINGDOM  OF  MOROCCO,Rabat,Activo,Embajada
+EMEXI,Embassy  in  Mexico,MEX,UNITED  MEXICAN  STATES,Mexico,Activo,Embajada
+EMFAO,Permanent  Mission  to  the  United  Nations  Organisation  for  Food  and  Agriculture,ITA,ITALIAN  REPUBLIC,Rome,Activo,Misión  Permanente 
+EMOZA,Embassy  in  Mozambique,MOZ,REPUBLIC  OF  MOZAMBIQUE,Maputo,Activo,Embajada
+EMSIA,Embassy  in  Malaysia,MYS,MALAYSIA,Kuala  Lumpur,Activo,Embajada
+EMSUR,Permanent  Mission  for  MERCOSUR  and  ALADI,URY,REPUBLIC  OF  URUGUAY,Montevideo,Activo,Misión  Permanente 
+ENAUN,Permanent  Mission  to  the  United  Nations,USA,UNITED  STATES  OF  AMERICA,New  York,Activo,Misión  Permanente 
+ENICA,Embassy  in  Nicaragua,NIC,REPUBLIC  OF  NICARAGUA,Managua,Activo,Embajada
+ENIGE,Embassy  in  Nigeria,NGA,FEDERAL  REPUBLIC  OF  NIGERIA,Abuja,Activo,Embajada
+ENORU,Embassy  in  Norway,NOR,KINGDOM  OF  NORWAY,Oslo,Activo,Embajada
+ENZEL,Embassy  in  New  Zeland,NZL,NEW  ZEALAND,Wellington,Activo,Embajada
+EOIRS,Permanent  Mission  to  the  International  Organisations  in  Geneve,CHE,SWISS  CONFEDERATION,Ginebra,Activo,Misión  Permanente 
+EPAKI,Embassy  in  Pakistan,PAK,ISLAMIC  REPUBLIC  OF  PAKISTAN,Islamabad,Activo,Embajada
+EPARA,Embassy  in  Paraguay,PRY,REPUBLIC  OF  PARAGUAY,Asuncion,Activo,Embajada
+EPBAJ,Embassy  in  Netherlands,NLD,KINGDOM  OF  THE  NETHERLANDS,The  Hague,Activo,Embajada
+EPERU,Embassy  in  Peru,PER,REPUBLIC  OF  PERU,Lima,Activo,Embajada
+EPNMA,Embassy  in  Panama,PAN,REPUBLIC  OF  PANAMA,Panama,Activo,Embajada
+EPOLO,Embassy  in  Poland,POL,REPUBLIC  OF  POLAND,Warsaw,Activo,Embajada
+EPORT,Embassy  in  Portugal,PRT,PORTUGUESE  REPUBLIC,Lisbon,Activo,Embajada
+EQATR,Embassy  in  Qatar,QAT,STATE  OF  QATAR,Doha,Activo,Embajada
+ERICA,Embassy  in  Costa  Rica,CRI,REPUBLIC  OF  COSTA  RICA,San  Jose,Activo,Embajada
+ERUMA,Embassy  in  Romania,ROU,ROMANIA,Bucarest,Activo,Embajada
+ERUNI,Embassy  in  United  Kingdom,GRB,UNITED  KINGDOM  OF  GREAT  BRITAIN  AND  NORTHERN  IRELAND,London  ,Activo,Embajada
+ESAFR,Embassy  in  South  Africa,ZAF,REPUBLIC  OF  SOUTH  AFRICA,Pretoria,Activo,Embajada
+ESALV,Embassy  in  El  Salvador,SLV,REPUBLIC  OF  EL  SALVADOR,San  Salvador,Activo,Embajada
+ESENE,Embassy  in  Senegal,SEN,REPUBLIC  OF  SENEGAL,Dakar,Activo,Embajada
+ESERB,Embassy  in  Serbia,SRB,REPUBLIC  OF  SERBIA,Belgrad,Activo,Embajada
+ESING,Embassy  in  Singapore,SGP,REPUBLIC  OF  SINGAPORE,Singapore,Activo,Embajada
+ESSED,Representation  to  the  Holy  See,VAT,VATICAN  CITY  STATE,Rome,Activo,Embajada
+ESUEC,Embassy  in  Sweden,SWE,KINGDOM  OF  SWEDEN,Stockholm,Activo,Embajada
+ESUIZ,Embassy  in  Switzerland,CHE,SWISS  CONFEDERATION,Bern,Activo,Embajada
+ESURI,Embassy  in  Suriname,SUR,REPUBLIC  OF  SURINAME,Paramaribo,Activo,Embajada
+ETAIL,Embassy  in  Thailand,THA,KINGDOM  OF  THAILAND,Bangkok,Activo,Embajada
+ETRIA,Embassy  in  Austria,AUT,REPUBLIC  OF  AUSTRIA,Viena,Activo,Embajada
+ETRIN,Embassy  in  Trinidad  and  Tobago,TTO,REPUBLIC  OF  TRINIDAD  AND  TOBAGO,Port  of  Spain,Activo,Embajada
+ETUNE,Embassy  in  Tunisia,TUN,TUNISIAN  REPUBLIC,Tunisia,Activo,Embajada
+ETURQ,Embassy  in  Türkiye,TUR,REPUBLIC  OF  TÜRKIYE,Ankara,Activo,Embajada
+EUCRA,Embassy  in  Ukraine,UKR,UKRAINE,Kiev,Activo,Embajada
+EUNES,"Permanent  Delegation  to  the  United  Nations  Educational, Scientific  and  Cultural  Organization",FRA,FRENCH  REPUBLIC,Paris,Activo,Misión  Permanente 
+EUNGR,Embassy  in  Hungary,HUN,HUNGARY,Budapest,Activo,Embajada
+EURUG,Embassy  in  Uruguay,URY,REPUBLIC  OF  URUGUAY,Montevideo,Activo,Embajada
+EVENE,Embassy  in  Venezuela,VEN,BOLIVARIAN  REPUBLIC  OF  VENEZUELA,Caracas,Activo,Embajada
+EVIET,Embassy  in  Vietnam,VNM,SOCIALIST  REPUBLIC  OF  VIETNAM,Hanoi,Activo,Embajada
+OCCAT,Argentine  Commercial  and  Cultural  Office  in  Taiwan,CHN,PEOPLE’S  REPUBLIC  OF  CHINA,Taiwan,Inactivo,Consulado
+REPAL,Representation  Office  in  the  State  of  Palestine,PSE,STATE  OF  PALESTINE,Ramallah,Activo,Embajada
