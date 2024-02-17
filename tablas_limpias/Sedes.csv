@@ -1,0 +1,160 @@
+sede_id,sede_desc_ingles,pais_iso_3,sede_tipo
+EANGO,Embassy  in  Angola,AGO,Embajada
+EEARB,Embassy  in  the  United  Arab  Emirates,ARE,Embajada
+EARME,Embassy  in  Armenia,ARM,Embajada
+CSIDN,Consulate  General  in  Sydney,AUS,Consulado
+EAUST,Embassy  in  Australia,AUS,Embajada
+ETRIA,Embassy  in  Austria,AUT,Embajada
+EAZER,Embassy  in  Azerbaijan,AZE,Embajada
+EBELG,Embassy  in  Belgium,BEL,Embajada
+ECEUR,Embassy  to  the  European  Union,BEL,Misión  Permanente
+EBANG,Embassy  in  Bangladesh,BGD,Embajada
+EBULG,Embassy  in  Bulgaria,BGR,Embajada
+CCOCH,Consulate  in  Cochabamba,BOL,Consulado
+CGPAZ,Consulate  General  in  La  Paz,BOL,Consulado
+CSCRS,Consulate  General  and  Promotion  Center  in  Santa  Cruz,BOL,Consulado  General  y  Centro  de  Promoción
+CTARI,Consulate  General  in  Tarija,BOL,Consulado
+CVILL,Consulate  in  Villazon,BOL,Consulado
+CYACU,Consulate  in  Yacuiba,BOL,Consulado
+EBOLV,Embassy  in  Bolivia,BOL,Embajada
+CALEG,Consulate  General  in  PORTO  ALEGRE,BRA,Consulado
+CBELO,Consulate  in  Belo  Horizonte,BRA,Consulado
+CCURI,Consulate  in  Curitiba,BRA,Consulado
+CFDIG,Consulate  in  Foz  do  Iguacu,BRA,Consulado
+CFLOR,Consulate  in  Florianopolis,BRA,Consulado
+CPABL,Consulate  General  and  Promotion  Center  in  Sao  Paolo,BRA,Consulado  General  y  Centro  de  Promoción
+CRECI,Consulate  in  Recife,BRA,Consulado
+CRIOJ,Consulate  General  in  Rio  de  Janeiro,BRA,Consulado
+CSBAH,Consulate  in  Sao  Salvador  de  Bahia,BRA,Consulado
+CURUG,Consulate  in  Uruguayana,BRA,Consulado
+EBRAS,Embassy  in  Brazil,BRA,Embajada
+EBARB,Embassy  in  Barbados,BRB,Embajada
+CGVAN,Consulate  General  in  Vancouver,CAN,Consulado
+CMREA,Consulate  General  in  Montreal,CAN,Consulado
+CTORO,Consulate  General  in  Toronto,CAN,Consulado
+ECANA,Embassy  in  Canada,CAN,Embajada
+EOIRS,Permanent  Mission  to  the  International  Organisations  in  Geneve,CHE,Misión  Permanente
+ESUIZ,Embassy  in  Switzerland,CHE,Embajada
+CANTO,Consulate  in  ANTOFAGASTA,CHL,Consulado
+CAREN,Consulate  General  in  Punta  Arenas,CHL,Consulado
+CCONC,Consulate  in  Concepcion,CHL,Consulado
+CPMON,Consulate  in  Puerto  Montt,CHL,Consulado
+CSIGO,Consulate  General  in  Santiago,CHL,Consulado
+CVALP,Consulate  General  in  Valparaiso,CHL,Consulado
+EHILE,Embassy  in  Chile,CHL,Embajada
+CBEIJ,Consular  Section  in  Beijing,CHN,Consulado
+CGUAN,Consulate  General  in  Guangzhou,CHN,Consulado
+CHONG,Consulate  General  in  Hong  Kong,CHN,Consulado
+CSHAN,Consulate  General  and  Promotion  Center  in  Shangai,CHN,Consulado  General  y  Centro  de  Promoción
+ECHIN,Embassy  in  China,CHN,Embajada
+OCCAT,Argentine  Commercial  and  Cultural  Office  in  Taiwan,CHN,Consulado
+ECOLO,Embassy  in  Colombia,COL,Embajada
+ERICA,Embassy  in  Costa  Rica,CRI,Embajada
+ECUBA,Embassy  in  Cuba,CUB,Embajada
+ECHES,Embassy  in  Czechia,CZE,Embajada
+CBONN,Consulate  in  Bonn,DEU,Consulado
+CFRAN,Consulate  General  and  Promotion  Center  in  Frankfurt,DEU,Consulado  General  y  Centro  de  Promoción
+CHAMB,Consulate  General  in  Hamburg,DEU,Consulado
+EALEM,Embassy  in  GERMANY,DEU,Embajada
+EDINA,Embassy  in  Danmark,DNK,Embajada
+EDOMI,Embassy  in  Dominican  Republic,DOM,Embajada
+EARGE,Embassy  in  Algeria,DZA,Embajada
+CGUAY,Consulate  in  Guayaquil,ECU,Consulado
+EECUA,Embassy  in  Ecuador,ECU,Embajada
+EEGIP,Embassy  in  Egypt,EGY,Embajada
+CBARC,Consulate  General  and  Promotion  Center  in  Barcelona,ESP,Consulado  General  y  Centro  de  Promoción
+CCADI,Consulate  in  Cadiz,ESP,Consulado
+CMADR,Consulate  General  in  Madrid,ESP,Consulado
+CMALL,Consulate  in  Palma,ESP,Consulado
+CTENE,Consulate  in  Tenerife,ESP,Consulado
+CVIGO,Consulate  General  in  Vigo,ESP,Consulado
+EESPA,Embassy  in  Spain,ESP,Embajada
+EETIO,Embassy  in  Ethiopia,ETH,Embajada
+EFINL,Embassy  in  Finland,FIN,Embajada
+EFRAN,Embassy  in  France,FRA,Embajada
+EUNES,"Permanent  Delegation  to  the  United  Nations  Educational, Scientific  and  Cultural  Organization",FRA,Misión  Permanente
+CLOND,Consulate  General  in  London,GBR,Consulado
+ERUNI,Embassy  in  United  Kingdom,GBR,Embajada
+EGREC,Embassy  in  Greece,GRC,Embajada
+EGUAT,Embassy  in  Guatemala,GTM,Embajada
+EGUYA,Embassy  in  Guyana,GUY,Embajada
+EHOND,Embassy  in  Honduras,HND,Embajada
+EHAIT,Embassy  in  Haiti,HTI,Embajada
+EUNGR,Embassy  in  Hungary,HUN,Embajada
+EISIA,Embassy  in  Indonesia,IDN,Embajada
+CGMUM,Consulate  General  and  Promotion  Center  in  Mumbai,IND,Consulado  General  y  Centro  de  Promoción
+EINDI,Embassy  in  India,IND,Embajada
+EIRLA,Embassy  in  Irlanda,IRL,Embajada
+EIRAN,Embassy  in  Iran,IRN,Embajada
+CGTEL,Consulate  General  in  Tel  Aviv,ISR,Consulado
+EISRA,Embassy  in  Israel,ISR,Embajada
+CMILA,Consulate  General  and  Promotion  Center  in  Milan,ITA,Consulado  General  y  Centro  de  Promoción
+CROMA,Consulate  General  in  Rome,ITA,Consulado
+EITAL,Embassy  in  Italy,ITA,Embajada
+EMFAO,Permanent  Mission  to  the  United  Nations  Organisation  for  Food  and  Agriculture,ITA,Misión  Permanente
+EJAMA,Embassy  in  Jamaica,JAM,Embajada
+EJAPO,Embassy  in  Japan,JPN,Embajada
+EKENY,Embassy  in  Kenya,KEN,Embajada
+ECORE,Embassy  in  South  Korea,KOR,Embajada
+EKUWA,Embassy  in  Kuwait,KWT,Embajada
+ELBIA,Embassy  in  Libya,LBY,Embajada
+ELUCI,Embassy  in  Saint  Lucia,LCA,Embajada
+EMARR,Embassy  in  Morocco,MAR,Embajada
+CMEXI,Consulate  General  in  Mexico,MEX,Consulado
+CPCAR,Consulate  in  Playa  del  Carmen,MEX,Consulado
+EMEXI,Embassy  in  Mexico,MEX,Embajada
+EMOZA,Embassy  in  Mozambique,MOZ,Embajada
+EMSIA,Embassy  in  Malaysia,MYS,Embajada
+ENIGE,Embassy  in  Nigeria,NGA,Embajada
+ENICA,Embassy  in  Nicaragua,NIC,Embajada
+EPBAJ,Embassy  in  Netherlands,NLD,Embajada
+ENORU,Embassy  in  Norway,NOR,Embajada
+ENZEL,Embassy  in  New  Zeland,NZL,Embajada
+EPAKI,Embassy  in  Pakistan,PAK,Embajada
+EPNMA,Embassy  in  Panama,PAN,Embajada
+CLIMA,Consulate  General  in  Lima,PER,Consulado
+EPERU,Embassy  in  Peru,PER,Embajada
+EFILI,Embassy  in  the  Philippines,PHL,Embajada
+EPOLO,Embassy  in  Poland,POL,Embajada
+EPORT,Embassy  in  Portugal,PRT,Embajada
+CASUN,Consulate  General  in  Asuncion,PRY,Consulado
+CCEST,Consulate  General  in  Ciudad  del  Este,PRY,Consulado
+CENCA,Consulate  General  in  Encarnacion,PRY,Consulado
+EPARA,Embassy  in  Paraguay,PRY,Embajada
+REPAL,Representation  Office  in  the  State  of  Palestine,PSE,Embajada
+EQATR,Embassy  in  Qatar,QAT,Embajada
+ERUMA,Embassy  in  Romania,ROU,Embajada
+EFRUS,Embassy  in  Russia,RUS,Embajada
+EARAB,Embassy  in  Saudi  Arabia,SAU,Embajada
+ESENE,Embassy  in  Senegal,SEN,Embajada
+ESING,Embassy  in  Singapore,SGP,Embajada
+ESALV,Embassy  in  El  Salvador,SLV,Embajada
+ESERB,Embassy  in  Serbia,SRB,Embajada
+ESURI,Embassy  in  Suriname,SUR,Embajada
+ESUEC,Embassy  in  Sweden,SWE,Embajada
+ETAIL,Embassy  in  Thailand,THA,Embajada
+ETRIN,Embassy  in  Trinidad  and  Tobago,TTO,Embajada
+ETUNE,Embassy  in  Tunisia,TUN,Embajada
+CGEST,Consulate  General  and  Promotion  Center  in  Istambul,TUR,Consulado  General  y  Centro  de  Promoción
+ETURQ,Embassy  in  Türkiye,TUR,Embajada
+EUCRA,Embassy  in  Ukraine,UKR,Embajada
+CCOLO,Consulate  in  Colonia,URY,Consulado
+CFBEN,Consulate  in  Fray  Bentos,URY,Consulado
+CMALD,Consulate  in  Maldonado,URY,Consulado
+CMDEO,Consulate  General  in  Montevideo,URY,Consulado
+CPAYS,Consulate  in  Paysandu,URY,Consulado
+CSLTO,Consulate  in  Salto,URY,Consulado
+EMSUR,Permanent  Mission  for  MERCOSUR  and  ALADI,URY,Misión  Permanente
+EURUG,Embassy  in  Uruguay,URY,Embajada
+CATLA,Consulate  General  in  Atlanta,USA,Consulado
+CCHIC,Consulate  General  in  Chicago,USA,Consulado
+CHOUS,Consulate  General  in  Houston,USA,Consulado
+CLANG,Consulate  General  and  Promotion  Center  in  Los  Angeles,USA,Consulado  General  y  Centro  de  Promoción
+CMIAM,Consulate  General  and  Promotion  Center  in  Miami,USA,Consulado  General  y  Centro  de  Promoción
+CNYOR,Consulate  General  and  Promotion  Center  in  New  York,USA,Consulado  General  y  Centro  de  Promoción
+EEEUU,Embassy  in  United  States,USA,Embajada
+EEOEA,Permanent  Mission  to  the  Organization  of  American  States,USA,Misión  Permanente
+ENAUN,Permanent  Mission  to  the  United  Nations,USA,Misión  Permanente
+EVIET,Embassy  in  Vietnam,VNM,Embajada
+CJOHA,Consulate  General  in  Johannesburg,ZAF,Consulado
+ESAFR,Embassy  in  South  Africa,ZAF,Embajada
