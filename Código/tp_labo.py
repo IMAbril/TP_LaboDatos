@@ -7,8 +7,11 @@ Fecha : Febrero 2024
 """
 import pandas as pd
 
-columnas_sede = ['id_sede', 'Nombre', 'Tipo', 'Estado', 'codigo_pais']
+columnas_sede = ['id_sede', 'Nombre', 'Tipo', 'Estado', 'codigo_pais','Red-Social']
 sedes = pd.DataFrame(columns=columnas_sede)
 
-columnas_pais = ['Codigo','Pbi', 'Nombre']
+columnas_pais = ['Codigo','PBI', 'Nombre','Region', 'Nivel-Ingreso']
 paises = pd.DataFrame(columns = columnas_pais)
+
+columnas_seccion = ['id_sede','Descripcion']
+secciones = pd.DataFrame(columns=columnas_seccion)
