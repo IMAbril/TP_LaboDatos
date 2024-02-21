@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Feb 21 09:20:42 2024
-
-@author: Roju2
+Trabajo Práctico N°1
+laboratorio de Datos - Verano 2024
+Autores :
+Fecha : Febrero 2024
 """
 
 import pandas as pd
