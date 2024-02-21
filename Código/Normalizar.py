@@ -12,22 +12,21 @@ import pandas as pd
 
 redes = ["facebook","instagram","youtube","twitter","linkedin","flickr"]
 
-def separar(dato):
-        if dato is not None:
-            datos_tupla = dato.strip(' //').split(' // ')
-            datos_tupla = dato.split(' //')
-            datos_tupla.pop()   
-            return datos_tupla
-        else:
-            return []
+def separar(texto):
+    """
+    Separa un string en una lista de elementos utilizando '  //  ' como delimitador.
+    """
+    if texto is not None:
+        texto_componentes = texto.strip(' //').split('  //  ')
+        return texto_componentes
+    else:
+        return []
     
 
 def obtenerNombreRed(Url):
     for red in redes: 
         if red in Url:
             return red 
-    if '@' in Url and 'gmail'  not in Url:
-            return  'instagram'
         
 def acomodar(df):
     columnas=['id_sede','Nombre','Url']
