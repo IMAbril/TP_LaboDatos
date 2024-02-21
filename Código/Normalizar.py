@@ -8,7 +8,6 @@ Fecha : Febrero 2024
 
 import pandas as pd
 
-     
 redes = ["facebook","instagram","youtube","twitter","linkedin","flickr"]
 
 def separar(dato):
@@ -20,11 +19,12 @@ def separar(dato):
         else:
             return []
     
+
 def obtenerNombreRed(Url):
     for red in redes: 
         if red in Url:
             return red 
-        elif '@' in Url:
+    if '@' in Url and 'gmail'  not in Url:
             return  'instagram'
         
 def acomodar(df):
