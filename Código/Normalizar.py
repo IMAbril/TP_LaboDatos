@@ -7,7 +7,6 @@ Fecha : Febrero 2024
 """
 
 import pandas as pd
-from inline_sql import sql, sql_val 
 
      
 redes = ["facebook","instagram","youtube","twitter","linkedin","flickr"]
