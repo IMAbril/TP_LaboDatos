@@ -8,6 +8,8 @@ Fecha : Febrero 2024
 
 import pandas as pd
 
+#Dominio del atributo Nombre de la relación redSocial_df
+
 redes = ["facebook","instagram","youtube","twitter","linkedin","flickr"]
 
 def separar(dato):

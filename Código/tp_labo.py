@@ -27,7 +27,7 @@ redSocial_df=pd.DataFrame(columns=columnas_redSocial)
 
 #Ahora importamos los datos ya limpios:
     
-carpeta = "/Users/Roju2/OneDrive/Desktop/Código/tablas limpias/"
+carpeta = "../tablas_limpias/"
 
 sedes = pd.read_csv(carpeta+'sedes.csv')
 PBI =pd.read_csv(carpeta + 'pbi.csv')
