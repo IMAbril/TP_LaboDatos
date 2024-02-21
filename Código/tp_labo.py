@@ -50,7 +50,7 @@ paises_df['Nivel_Ingreso'] = regiones['IncomeGroup']
 secciones_df['id_sede'] = secciones['sede_id']
 secciones_df['Descripcion'] = secciones['sede_desc_castellano']
 #Para normalizar, aplicamos una funcion importada de nuestro modulo 
-redSocial_df['id_sede'] = secciones['sede_id']
+redSocial_df['id_sede'] = sedes['sede_id']
 redSocial_df['Url'] = sedes['redes_sociales']
 
 redSocial_df = n.acomodar(redSocial_df)
