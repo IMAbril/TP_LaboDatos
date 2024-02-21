@@ -5,6 +5,7 @@ laboratorio de Datos - Verano 2024
 Autores :
 Fecha : Febrero 2024
 """
+import pandas as pd
 import Normalizar as n
 
 #Creamos DataFrames vacios correspondientes al Modelo Relacional de nuestro DER
