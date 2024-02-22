@@ -3,6 +3,7 @@
 Trabajo Práctico N°1
 laboratorio de Datos - Verano 2024
 Autores :
+Nombre del grupo: The Beatles 
 Fecha : Febrero 2024
 """
 import pandas as pd
