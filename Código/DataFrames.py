@@ -2,7 +2,7 @@
 """
 Trabajo Práctico N°1
 laboratorio de Datos - Verano 2024
-Autores :
+Autores : Ibarra, Abril; Vassolo, Francisco; Dominguez,Rocio
 Nombre del grupo: The Beatles 
 Fecha : Febrero 2024
 """
@@ -73,6 +73,18 @@ redSocial_df = sql^"""
                     SELECT Url, Nombre
                     FROM redSocial_df
 """
+#Recuperamos casos perdidos mediante la limpieza de los datasets
+secciones_df = sql ^ """
+                        SELECT scd.id_sede, 
+                            CASE WHEN sc.sede_desc_castellano IS NULL
+                                THEN 'Sección única'
+                                ELSE sc.sede_desc_castellano
+                            END AS Descripcion
+                        FROM sedes_df AS scd
+                        LEFT OUTER JOIN secciones AS sc
+                        ON scd.id_sede = sc.sede_id
+                        ORDER BY id_sede
+                    """
 
 
 
