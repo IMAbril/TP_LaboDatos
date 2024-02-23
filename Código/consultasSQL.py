@@ -2,7 +2,7 @@
 """
 Trabajo Práctico N°1
 laboratorio de Datos - Verano 2024
-Autores :
+Autores :Ibarra, Abril; Vassolo, Francisco; Dominguez,Rocio
 Nombre del Grupo: The Beatles 
 Fecha : Febrero 2024
 """
