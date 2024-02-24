@@ -29,10 +29,10 @@ redSocial_df=pd.DataFrame(columns=columnas_redSocial)
 
 #Ahora importamos los datos ya limpios:
     
-carpeta = "/Users/Roju2/OneDrive/Desktop/Código/tablas limpias/"
+carpeta = "/tablas limpias/"
 
 sedes = pd.read_csv(carpeta+'sedes.csv')
-PBI =pd.read_csv(carpeta + 'pbi.csv')
+PBI =pd.read_csv(carpeta + 'PBI.csv', sep=';')
 regiones =pd.read_csv(carpeta + 'regiones.csv')
 secciones =pd.read_csv(carpeta + 'secciones.csv')
 
@@ -44,7 +44,7 @@ sedes_df['codigo_pais']=sedes['pais_iso_3']
 
 
 paises_df['Codigo'] = PBI['Country Code']
-paises_df['PBI'] = PBI['2022 PBI']
+paises_df['PBI'] = PBI['pbi']
 paises_df['Nombre'] = regiones['TableName']
 paises_df['Region'] = regiones['Region']
 paises_df['Nivel_Ingreso'] = regiones['IncomeGroup']
