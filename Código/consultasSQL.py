@@ -81,6 +81,7 @@ regionPBI_df = sql ^ """
                            promPBI_df.PBI AS "Promedio PBI per Cápita 2022 (U$S)"
                     FROM promPBI_df
                     JOIN region_df ON promPBI_df.Region = region_df.Region
+                    ORDER BY promPBI_df.PBI DESC
                   """
 
 
@@ -128,8 +129,10 @@ getInfoRedes_df = sql ^ """
 infoRedes_df = sql ^ """
                       SELECT getInfoRedes_df.Nombre, 
                              getInfoRedes_df.id_sede AS Sede, 
-                             getInfoRedes_df.URL,
-                             redesSociales.Nombre AS "Red Social"                             
+                             redesSociales.Nombre AS "Red Social",
+                             getInfoRedes_df.URL,                                
                       FROM getInfoRedes_df
                       JOIN redesSociales ON getInfoRedes_df.URL = redesSociales.URL
+                      ORDER BY getInfoRedes_df.Nombre, Sede, "Red Social", getInfoRedes_df.URL
                       """
+
