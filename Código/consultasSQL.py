@@ -106,11 +106,14 @@ getRedSocial_df = sql ^ """
                           """
 
 cantRedesPais_df = sql ^ """
-                      SELECT getRedSocial_df.codigo_pais, 
-                             count(getRedSocial_df."Red Social")
+                      SELECT paises.Nombre,
+                             count(getRedSocial_df."Red Social") AS "Cantidad de Redes Sociales"
                       FROM getRedSocial_df
-                      GROUP BY codigo_pais
+                      JOIN paises ON paises.Codigo = getRedSocial_df.codigo_pais
+                      GROUP BY Nombre
+                      ORDER BY Nombre ASC
                       """
+                      
 
 
 ##--##--##--##--##--##--##--##--##--##--##--##--##--##--##--##--##--##--##--##
@@ -135,4 +138,5 @@ infoRedes_df = sql ^ """
                       JOIN redesSociales ON getInfoRedes_df.URL = redesSociales.URL
                       ORDER BY getInfoRedes_df.Nombre, Sede, "Red Social", getInfoRedes_df.URL
                       """
+
 
