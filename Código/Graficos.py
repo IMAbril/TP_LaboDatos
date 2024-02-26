@@ -66,6 +66,11 @@ pbi_region_mediana = sql ^ """
                                 ON pr.Region = rm.Region
                                 ORDER BY mediana
                             """
+pbi_region_mediana_zoom = sql ^ """
+                                SELECT *
+                                FROM pbi_region_mediana
+                                WHERE Region == 'Sub-Saharan Africa' OR Region == 'South Asia'
+                                """
 
 fig, ax = plt.subplots()
     
@@ -76,13 +81,32 @@ rcParams['axes.spines.top']    = False            # Elimina linea superior  del 
 rcParams['axes.spines.bottom'] = False            # Elimina linea inferior  del recuadro
 sns.boxplot(data=pbi_region_mediana, x='Region', y='PBI')
 # Agrega titulo, etiquetas al eje Y 
-ax.set_title('PBI 2022 por región geográfica')
+ax.set_title('PBI 2022 por región geográfica ')
 ax.set_xlabel('')
-ax.set_ylabel('PBI per capita')
+ax.set_ylabel('PBI per capita (U$S)')
 plt.yticks(np.arange(0, 120001, 10000))  # Ajuste para incrementos de 10,000 en el eje Y
 ax.set_ylim(0,120000)
 plt.xticks(np.arange(7),labels=['SSA','SA','MENA','LAC','EAP','ECA','NA'])
 ax.yaxis.set_major_formatter(ticker.StrMethodFormatter("{x:,.0f}")); 
+
+#Boxplot con zoom
+
+fig, ax = plt.subplots()
+    
+rcParams['font.family'] = 'sans-serif'           # Modifica el tipo de letra
+rcParams['axes.spines.right']  = False            # Elimina linea derecha   del recuadro
+rcParams['axes.spines.left']   = True             # Agrega  linea izquierda del recuadro
+rcParams['axes.spines.top']    = False            # Elimina linea superior  del recuadro
+rcParams['axes.spines.bottom'] = False            # Elimina linea inferior  del recuadro
+sns.boxplot(data=pbi_region_mediana_zoom, x='Region', y='PBI')
+# Agrega titulo, etiquetas al eje Y 
+ax.set_title('PBI 2022 por región geográfica ')
+ax.set_xlabel('')
+ax.set_ylabel('PBI per capita (U$S)')
+plt.yticks(np.arange(0, 10000, 1000))  # Ajuste para incrementos de 1,000 en el eje Y
+ax.set_ylim(0,8000)
+ax.yaxis.set_major_formatter(ticker.StrMethodFormatter("{x:,.0f}")); 
+
 #%%
 
 # Extraer los datos de Sedes y PBI
