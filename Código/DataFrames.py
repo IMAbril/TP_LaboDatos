@@ -73,7 +73,7 @@ redSocial_df = sql^"""
                     SELECT Url, Nombre
                     FROM redSocial_df
 """
-#Recuperamos casos perdidos mediante la limpieza de los datasets
+#Dado que en nuestro modelo cada sede tiene al menos una sección, estandarizamos los datos e incorporamos al dataFrame secciones_df todas las sedes en sedes_df que no tenían registros en la tabla secciones
 secciones_df = sql ^ """
                         SELECT scd.id_sede, 
                             CASE WHEN sc.sede_desc_castellano IS NULL
