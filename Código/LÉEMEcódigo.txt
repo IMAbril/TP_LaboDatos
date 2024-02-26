@@ -15,7 +15,7 @@ Dentro de esta carpeta, hay 4 archivos de Python. Para ejecutarlos correctamente
 
 
 2.  Generar los data frames:
-    Después de haber ejecutado el archivo de normalización, ejecutar “DataFrames.py”, asegurándose de estar en el directorio correcto donde están las tablas limpias (para ello busque la variable carpeta dentro del código). 
+    Después de haber ejecutado el archivo de normalización, ejecutar “DataFrames.py”, asegurándose de estar en el directorio correcto donde están las     tablas limpias (para ello busque la variable carpeta dentro del código). 
 
 
 3.  Hacer las consultas SQL: 
