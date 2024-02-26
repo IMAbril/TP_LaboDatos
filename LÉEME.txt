@@ -7,7 +7,8 @@
 ####################################
 
 
-Usted ya ha descargado el archivo “TP01-thebeatles.zip”, y con estas instrucciones sabrá que hay dentro de cada carpeta y los pasos a seguir para poder comprender correctamente cada una. Aquí enlistadas las tablas:
+Usted ya ha descargado el archivo “TP01-thebeatles.zip”, y con estas instrucciones sabrá que hay dentro de cada carpeta y
+los pasos a seguir para poder comprender correctamente cada una. Aquí enlistadas las tablas:
 
 
 1.  TablasOriginales: 
