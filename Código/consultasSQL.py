@@ -23,7 +23,7 @@ paises = data.paises_df
 # Tabla con: País, Sedes, secciones promedio y PBI per Capita 2022
 
 NomPBI_df = sql ^ """
-                    SELECT Nombre, PBI, Codigo AS codigo_pais
+                    SELECT Nombre, CAST(REPLACE(PBI, ',', '.') AS DECIMAL(9,2)) AS PBI, Codigo AS codigo_pais
                     FROM paises AS Nom_PBI
                     """
 
