@@ -27,4 +27,5 @@ los pasos a seguir para poder comprender correctamente cada una. Aquí enlistada
 
 
 4. Reportes: 
-      Aquí se encuentran descargadas en csv las consultas de SQL realizadas dentro de la carpeta Código.
+      Aquí se encuentran descargadas en csv las consultas de SQL realizadas dentro de la carpeta Código. Este es un material
+      suplementario.
