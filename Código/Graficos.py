@@ -81,7 +81,7 @@ ax.set_xlabel('')
 ax.set_ylabel('PBI per capita')
 plt.yticks(np.arange(0, 120001, 10000))  # Ajuste para incrementos de 10,000 en el eje Y
 ax.set_ylim(0,120000)
-plt.xticks(np.arange(7),labels=['SSA','LAC','SA','ECA','EAP','MENA','NA'])
+plt.xticks(np.arange(7),labels=['SSA','SA','MENA','LAC','EAP','ECA','NA'])
 ax.yaxis.set_major_formatter(ticker.StrMethodFormatter("{x:,.0f}")); 
 #%%
 
