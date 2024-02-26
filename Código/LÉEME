@@ -1,0 +1,29 @@
+﻿LÉEME:
+
+
+####################################
+##       PASOS PARA EJECUTAR      ##
+##   CORRECTAMENTE LOS ARCHIVOS   ##
+####################################
+
+
+Dentro de esta carpeta, hay 4 archivos de Python. Para ejecutarlos correctamente, se necesitan descargar todas las tablas ya limpias y ubicarlas todas dentro de una misma carpeta. Una vez hecho eso, se deberán seguir los siguientes pasos:
+
+
+1.  Normalizar las tablas: 
+    Para eso, se debe ejecutar el archivo “Normalizar.py”. 
+
+
+2.  Generar los data frames:
+    Después de haber ejecutado el archivo de normalización, ejecutar “DataFrames.py”, asegurándose de estar en el directorio correcto donde están las tablas limpias (para ello busque la variable carpeta dentro del código). 
+
+
+3.  Hacer las consultas SQL: 
+    Una vez completados los pasos anteriores, ejecutar el archivo “consultasSQL.py”. Generará las tablas en respuesta a las preguntas del punto H.
+
+
+4. Generar los gráficos: 
+    Por último, ejecutar el archivo “Graficos.py” para generar los 3 gráficos solicitados.
+
+
+Listo!
