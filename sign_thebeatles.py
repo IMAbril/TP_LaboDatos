@@ -14,6 +14,7 @@ Contenido: --
 # IMPORT módulos 
 # =============================================================================
 import pandas as pd
+import visualizarImagenes as view #no se si lo vamos a usar pero lo pongo por las dudas
 
 #from modulos import modulo as  -> Se importa el archivo modulo guardado en la carpeta modulos
 
