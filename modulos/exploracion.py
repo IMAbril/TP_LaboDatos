@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Mar  1 13:02:01 2024
-
-@author: Roju2
+Trabajo Práctico N°2
+laboratorio de Datos - Verano 2024
+Autores : Ibarra, Abril; Vassolo, Francisco; Dominguez,Rocio
+Nombre del grupo: The Beatles 
+Fecha : Marzo 2024
 """
 
 import pandas as pd
