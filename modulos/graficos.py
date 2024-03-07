@@ -34,9 +34,9 @@ abc = pd.DataFrame({'letras': ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'k',
 #ahora agrupamos para obtener la cantidad de muestras que tenemos por cada letra
 
 cantMuestras= sql^"""SELECT s.label, COUNT(*) as cantidad, abc.letras
-            FROM sing as s
+            FROM sign as s
             INNER JOIN abc
-            ON abc.label = d.label
+            ON abc.label = s.label
             GROUP BY s.label, abc.letras
             ORDER BY s.label;
             """
@@ -175,7 +175,7 @@ plt.show()
 #Comparamos dos letras similares visualmente
 data_E_M = sql^"""
                 select *
-                from sing
+                from sign
                 where label == 4 or label == 12
 """
 
@@ -195,7 +195,7 @@ plt.show()
 #Ahora comparamos dos letras totalmente distintas visualmente
 data_E_L = sql^"""
                 select *
-                from sing
+                from sign
                 where label == 4 or label == 11
 """
 
