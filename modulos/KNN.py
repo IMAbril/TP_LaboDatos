@@ -21,3 +21,8 @@ print('Cantidad de muestras de la letra A:', cantidad_letra_A)
 
 cantidad_letra_L = cantMuestras[cantMuestras['letras'] == 'l']['cantidad'].values[0]
 print('Cantidad de muestras de la letra L:', cantidad_letra_L)
+
+
+diferenciaMuestral = cantidad_letra_A/cantidad_letra_L
+print('Las clases están balanceadas, pues al compararlas obtenemos un valor muy cercano a uno : ', round(diferenciaMuestral,2))
+
