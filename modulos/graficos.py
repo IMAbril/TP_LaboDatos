@@ -1,18 +1,55 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Sun Mar  3 15:52:07 2024
-
-@author: abril
+Trabajo Práctico N°2
+laboratorio de Datos - Verano 2024
+Autores : Ibarra, Abril; Vassolo, Francisco; Dominguez,Rocio
+Nombre del grupo: The Beatles 
+Fecha : Marzo 2024
 """
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from inline_sql import sql, sql_val
+from sklearn.decomposition import PCA
+import seaborn as sns
+#%%
+#Cargamos archivo csv
 
 carpeta = './datasets/'
 sign = pd.read_csv(carpeta+'sign_mnist_train.csv')
 
+#%%
+#Comenzamos explorando, conociendo cuantas muestras poseemos de cada letra
 
+#Los labels van de 0 a 24, no incluye el 9 (la j) ni el 25(la z)
+#armamos un df con la informacion de los casos de test que tenemos
+
+abc = pd.DataFrame({'letras': ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'k', 'l', 
+                               'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y'],
+                    'label': [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 
+                              17, 18, 19, 20, 21, 22, 23, 24]})
+
+
+#ahora agrupamos para obtener la cantidad de muestras que tenemos por cada letra
+
+cantMuestras= sql^"""SELECT s.label, COUNT(*) as cantidad, abc.letras
+            FROM sing as s
+            INNER JOIN abc
+            ON abc.label = d.label
+            GROUP BY s.label, abc.letras
+            ORDER BY s.label;
+            """
+#graficamos lo obtenido 
+fig, ax = plt.subplots()
+
+ax.bar(x=cantMuestras['letras'], height=cantMuestras['cantidad'],color = 'purple')
+ax.set_title ('Cantidad de muestras por letra')
+ax.set_xlabel ('Letras')
+ax.set_ylabel ('Cantidad de muestras')
+
+#%%
+#Separamos tres dataframes de letras para comparar
 letraM = sign[sign['label']==12]
 
 letraE = sign[sign['label']==4]
@@ -49,14 +86,9 @@ ax[2].set_title('Imagen 3')
 ax[3].matshow(im4[1:], cmap="gray")
 ax[3].set_title('Imagen 4')
 
-
-#título
 plt.suptitle("Comparación de imagenes de la letra M", y=0.3)
-
 # Ajustar el diseño para evitar superposiciones
 plt.tight_layout()
-
-# Mostrar la figura
 plt.show()
 
 """
@@ -137,4 +169,46 @@ axes[1].set_title('Imagen 2')
 plt.tight_layout()
 
 # Mostrar la figura
+plt.show()
+#%%
+#Ahora exploramos visualmente como varía el comportamiento de los datos, cuando las letras son muy parecidas entre sí y cuando son distintas
+#Comparamos dos letras similares visualmente
+data_E_M = sql^"""
+                select *
+                from sing
+                where label == 4 or label == 12
+"""
+
+X = data_E_M.drop('label', axis=1).values
+y = data_E_M['label'].values
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X)
+
+plt.scatter(X_pca[y == 4, 0], X_pca[y == 4, 1], label='Label 4', s=7)
+plt.scatter(X_pca[y == 12, 0], X_pca[y == 12, 1], label='Label 12', s=7)
+
+plt.title('PCA : comparar E y M')
+plt.xlabel('Primera Componente')
+plt.ylabel('Segunda Componente')
+plt.show()
+
+#Ahora comparamos dos letras totalmente distintas visualmente
+data_E_L = sql^"""
+                select *
+                from sing
+                where label == 4 or label == 11
+"""
+
+X = data_E_L.drop('label', axis=1).values
+y = data_E_L['label'].values
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X)
+
+plt.scatter(X_pca[y == 4, 0], X_pca[y == 4, 1], label='Label 4', s=7)
+plt.scatter(X_pca[y == 11, 0], X_pca[y == 11, 1], label='Label 11', s=7)  # Corrección aquí
+
+
+plt.title('PCA : comparar E y L ')
+plt.xlabel('Primera Componente')
+plt.ylabel('Segunda Componente')
 plt.show()
