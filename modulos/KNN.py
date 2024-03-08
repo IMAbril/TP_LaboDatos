@@ -130,3 +130,44 @@ plt.xlabel('Cantidad de Atributos')
 plt.ylabel('Score')
 plt.grid(True)
 plt.show()
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#PROBAR
+
+import numpy as np 
+# Rango de valores por los que se va a mover k
+valores_k = range(1, 20)
+#  Cantidad de veces que vamos a repetir el experimento
+Nrep = 50
+# Matrices donde vamos a ir guardando los resultados
+resultados_test  = np.zeros(( Nrep , len(valores_k)))
+resultados_train = np.zeros(( Nrep , len(valores_k)))
+
+# Realizamos la combinacion de todos los modelos (Nrep x k)
+for i in range(Nrep):
+    # Dividimos en test(30%) y train(70%)
+    X_train, X_test, Y_train, Y_test = train_test_split(X, y, test_size = 0.2) 
+    # Generamos el modelo y lo evaluamos
+    for k in valores_k:
+        # Declaramos el tipo de modelo
+        neigh = KNeighborsClassifier(n_neighbors = k)
+        # Entrenamos el modelo (con datos de train)
+        neigh.fit(X_train, Y_train) 
+        # Evaluamos el modelo con datos de train y luego de test
+        resultados_train[i,k-1] = neigh.score(X_train, Y_train)
+        resultados_test[i,k-1]  = neigh.score(X_test , Y_test )
+
+# Promediamos los resultados de cada repeticion
+promedios_train = np.mean(resultados_train, axis = 0) 
+promedios_test  = np.mean(resultados_test , axis = 0) 
+
+##################################################################
+## Graficamos R2 en funcion de k (para train y test)
+##################################################################
+plt.plot(valores_k, promedios_train, label = 'Train')
+plt.plot(valores_k, promedios_test, label = 'Test')
+plt.legend()
+plt.title('Performance del modelo de knn')
+plt.xlabel('Cantidad de vecinos')
+plt.ylabel('R^2')
+plt.xticks(valores_k)
+plt.ylim(0.60,1.00)
