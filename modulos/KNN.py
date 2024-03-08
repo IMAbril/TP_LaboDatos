@@ -89,4 +89,31 @@ plt.title('Scores del Modelo KNN con Conjuntos de 3 Atributos')
 plt.xlabel('Numero de iteración')
 plt.ylabel('Score')
 plt.show()
+#%%
+
+#Ahora vamos variando, no solo los atributos utilizados, sinó tambien el numero de k
+
+#Plantamos una semilla apra que la generación del random, sea siempre la misma al ejecutar 
+random_state = 5
+# Generar una lista de 10 numeros aleatorios entre 1 y 99
+lista_atributos = [random.randint(1, 99) for _ in range(10)]
+
+for k in range(1, 100):
+       cant_atributos = random.choice(lista_atributos)
+       columnas_Al_Azar = random.sample(lista_columnas, cant_atributos)#seleccionamos columnas al azar
+       neigh = KNeighborsClassifier(n_neighbors=k) #iniciamos el modelo
+       neigh.fit(X_train[columnas_Al_Azar], y_train) #lo entrenamos con las columnas seleccionadas
+       score = neigh.score(X_test[columnas_Al_Azar], y_test)#lo evaluamos
+       scores.append(score) 
+       iteraciones.append(k)
+       print(f'Score del modelo: {score}, cantidad de vecinos: {k}, cantidad de atributos: {cant_atributos}')
+
+
+plt.scatter(iteraciones, scores, label='Scores', color = 'red', s = 20)
+plt.plot(iteraciones, scores, color='red', linestyle='--', label='Línea de Tendencia')
+plt.title('Scores del Modelo KNN con Conjuntos de 3 Atributos')
+plt.xlabel('Iteración')
+plt.ylabel('Score')
+plt.show()
+   
 
