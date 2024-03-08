@@ -93,19 +93,38 @@ plt.show()
 
 #Ahora vamos variando, no solo los atributos utilizados, sinó tambien el numero de k
 
-#Plantamos una semilla apra que la generación del random, sea siempre la misma al ejecutar 
+#Plantamos una semilla para que la generación del random en nuestr lista_atributos, sea siempre la misma al ejecutar 
 random_state = 5
-# Generar una lista de 10 numeros aleatorios entre 1 y 99
+# Generamos una lista de 10 numeros aleatorios entre 1 y 99
 lista_atributos = [random.randint(1, 99) for _ in range(10)]
+print(lista_atributos)
 
-for k in range(1, 100):
+#Inicializamos dos variables para luego realizar graficos
+atributos = []
+scores = []
+
+for k in range(1, 50):
        cant_atributos = random.choice(lista_atributos)
        columnas_Al_Azar = random.sample(lista_columnas, cant_atributos)#seleccionamos columnas al azar
        neigh = KNeighborsClassifier(n_neighbors=k) #iniciamos el modelo
        neigh.fit(X_train[columnas_Al_Azar], y_train) #lo entrenamos con las columnas seleccionadas
        score = neigh.score(X_test[columnas_Al_Azar], y_test)#lo evaluamos
-       scores.append(score) 
-       iteraciones.append(k)
-       print(f'Score del modelo: {score}, cantidad de vecinos: {k}, cantidad de atributos: {cant_atributos}')
+       scores.append(score)
+       atributos.append(cant_atributos)
+       print(f'Score del modelo: {score:.2}, cantidad de vecinos: {k}, cantidad de atributos: {cant_atributos}')
 
+#Realizamos el grafico de Score en funcion del numero de vecinos
+plt.plot(range(1, 50), scores, marker='o', linestyle='-', color='violet')
+plt.title('Score del Modelo en Función del Número de Vecinos')
+plt.xlabel('Número de Vecinos (k)')
+plt.ylabel('Score')
+plt.grid(True)
+plt.show()
 
+#Realizamos el grafico e score en funcion de la cantidad de atributos
+plt.scatter(atributos, scores, marker='o', color='orange')
+plt.title('Score del Modelo en Función de la Cantidad de Atributos')
+plt.xlabel('Cantidad de Atributos')
+plt.ylabel('Score')
+plt.grid(True)
+plt.show()
