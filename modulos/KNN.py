@@ -10,6 +10,8 @@ from exploracion import sign, cantMuestras
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
+import random
+#%%
 #A partir del dataframe original, construimos un nuevo dataframe que contenga sólo al subconjunto de imágenes correspondientes a señas de las letras L o A.
 
 data_L_A = sign[(sign['label'] == 0) | (sign['label'] == 11)]
