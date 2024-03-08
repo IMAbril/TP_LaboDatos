@@ -9,7 +9,7 @@ Fecha : Marzo 2024
 from exploracion import sign, cantMuestras
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
-
+import matplotlib.pyplot as plt
 #A partir del dataframe original, construimos un nuevo dataframe que contenga sólo al subconjunto de imágenes correspondientes a señas de las letras L o A.
 
 data_L_A = sign[(sign['label'] == 0) | (sign['label'] == 11)]
@@ -67,14 +67,26 @@ lista_columnas = X.columns.tolist()
 # Separamos en conjuntos de train y test
 X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.2, random_state=5)
 
-
+#Creo dos listas, para poder realizar un grafico
+iteraciones = []
+scores = []
 k = 5
 
 # Probamos con distintos conjuntos de tres atributos y comparamos resultados
-for _ in range(5):   #Iteramos 5 veces
+for i in range(5):   #Iteramos 5 veces
     columnas_Al_Azar= random.sample(lista_columnas, 3) #seleccionamos columnas al azar
     neigh = KNeighborsClassifier(n_neighbors=k) #iniciamos el modelo
     neigh.fit(X_train[columnas_Al_Azar], y_train) #lo entrenamos con las columnas seleccionadas
     score = neigh.score(X_test[columnas_Al_Azar], y_test)#lo evaluamos
+    scores.append(score) 
+    iteraciones.append(i)
     print(f' Score del modelo: {score}')
     
+#Ahora graficamos    
+plt.scatter(iteraciones, scores, label='Scores', color = 'red', s = 20)
+plt.plot(iteraciones, scores, color='red', linestyle='--', label='Línea de Tendencia')
+plt.title('Scores del Modelo KNN con Conjuntos de 3 Atributos')
+plt.xlabel('Numero de iteración')
+plt.ylabel('Score')
+plt.show()
+
