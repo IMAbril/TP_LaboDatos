@@ -109,11 +109,3 @@ for k in range(1, 100):
        print(f'Score del modelo: {score}, cantidad de vecinos: {k}, cantidad de atributos: {cant_atributos}')
 
 
-plt.scatter(iteraciones, scores, label='Scores', color = 'red', s = 20)
-plt.plot(iteraciones, scores, color='red', linestyle='--', label='Línea de Tendencia')
-plt.title('Scores del Modelo KNN con Conjuntos de 3 Atributos')
-plt.xlabel('Iteración')
-plt.ylabel('Score')
-plt.show()
-   
-
