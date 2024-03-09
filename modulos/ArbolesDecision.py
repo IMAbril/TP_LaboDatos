@@ -1,12 +1,75 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Sat Mar  9 15:14:21 2024
+Created on Fri Mar  8 17:00:02 2024
 
 @author: francisco
 """
 
+import pandas as pd
+import numpy as np
+from graficos import sign, cantMuestras
+from sklearn.neighbors import KNeighborsClassifier
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
+import random
+
+
+# Cargar los datos desde el archivo CSV
+carpeta = '/home/francisco/Documents/Labo de Datos/TP02/Archivos Python/'
+data = pd.read_csv(carpeta+'sign_mnist_train (1).csv')
+
 #%%
+#A partir del dataframe original, construimos un nuevo dataframe que contenga sólo al subconjunto de imágenes correspondientes a señas de las letras L o A.
+data_vocales = sign[(sign['label'] == 0) | (sign['label'] == 4) | (sign['label'] == 8) | (sign['label'] == 13) | (sign['label'] == 19)]
+
+
+#Obtuvimos la cantidad de muestras de cada letra al realizar la exploración.
+cantidad_letra_A = cantMuestras[cantMuestras['letras'] == 'a']['cantidad'].values[0]
+print('Cantidad de muestras de la letra A:', cantidad_letra_A)
+
+# Iterar sobre todas las letras
+for letra in ['E', 'I', 'O', 'U']:
+    cantidad_letra = cantMuestras[cantMuestras['letras'] == letra.lower()]['cantidad'].values[0]
+    diferencia_muestral = cantidad_letra_A / cantidad_letra
+    print(f'La cantidad de muestras de la letra A es {diferencia_muestral} veces mayor que la cantidad de muestras de la letra {letra}.')
+
+print('Las clases están balanceadas, pues al compararlas todas obtenemos un valor muy cercano a uno')
+#%%
+# Comenzamos separando nuestras variables 
+X = data_vocales.drop(['label'], axis=1)
+y = data_vocales['label']
+
+#Separamos en un conjunto de entrenamiento y otro de validación. Colocamos una semilla, con random-state
+# Separamos en 80% entrenamiento y 20% prueba 
+X_train, X_test, y_train, y_test = train_test_split(X, y, shuffle=True, test_size=0.2, random_state=10)
+
+# Crear y ajustar modelos de árbol de decisión con diferentes profundidades
+# Vamos a analizar profundidades de árbol de 1 a 15
+depths = range(1, 16)
+mean_scores = []
+
+for depth in depths:
+    # Crear el modelo de árbol de decisión
+    clf = DecisionTreeClassifier(max_depth=depth, random_state=5)
+    
+    # Realizar validación cruzada con k-folding (k = 5)
+    scores = cross_val_score(clf, X_train, y_train, cv=5)
+    
+    # Calcular el promedio de los puntajes de validación cruzada
+    mean_score = np.mean(scores)
+    mean_scores.append(mean_score)
+    
+    print(f"Profundidad: {depth}, Precisión Media: {mean_score}")
+
+# Seleccionar la mejor profundidad del árbol
+best_depth_index = np.argmax(mean_scores)
+best_depth = depths[best_depth_index]
+print(f"Mejor Profundidad: {best_depth}")
+
 # Entrenar el modelo de árbol de decisión con la mejor profundidad
 best_clf = DecisionTreeClassifier(max_depth=best_depth, random_state=10)
 best_clf.fit(X_train, y_train)
@@ -14,62 +77,16 @@ best_clf.fit(X_train, y_train)
 # Evaluar el modelo en el conjunto de prueba
 y_pred = best_clf.predict(X_test)
 test_accuracy = accuracy_score(y_test, y_pred)
-print(f"Precisión en el conjunto de prueba: {test_accuracy}")
+print(f"Precisión en el conjunto de test: {test_accuracy}")
 
-# Generar métricas de clasificación multiclase
-print(classification_report(y_test, y_pred))
-
-# Generar matriz de confusión
-conf_matrix = confusion_matrix(y_test, y_pred)
-print("Matriz de Confusión:")
-print(conf_matrix)
-
-# #%%
-# # Visualización de la distribución de clases
-# plt.figure(figsize=(8, 6))
-# data_vocales['label'].value_counts().plot(kind='bar')
-# plt.title('Distribución de Clases')
-# plt.xlabel('Clase')
-# plt.ylabel('Frecuencia')
-# plt.show()
-
-# # Visualización de la precisión media en función de la profundidad del árbol
-# plt.figure(figsize=(10, 6))
-# plt.plot(depths, mean_scores, marker='o', color='b')
-# plt.title('Precisión Media de Validación Cruzada vs. Profundidad del Árbol')
-# plt.xlabel('Profundidad del Árbol')
-# plt.ylabel('Precisión Media')
-# plt.xticks(depths)
-# plt.grid(True)
-# plt.show()
-
-# # Visualización de la matriz de confusión
-# """
-# # Entrenar el modelo de árbol de decisión con la mejor profundidad
-# # Generar matriz de confusión
-# conf_matrix = confusion_matrix(y_test, y_pred)
-
-# # Visualizar la matriz de confusión
-# plt.figure(figsize=(8, 6))
-# plt.imshow(conf_matrix, interpolation='nearest', cmap=plt.cm.Blues)
-# plt.title('Matriz de Confusión')
-# plt.colorbar()
-# classes = [str(i) for i in range(len(np.unique(y)))]
-# tick_marks = np.arange(len(classes))
-# plt.xticks(tick_marks, classes)
-# plt.yticks(tick_marks, classes)
-# plt.xlabel('Clase Predicha')
-# plt.ylabel('Clase Verdadera')
-
-# # Anotar los valores en la matriz
-# thresh = conf_matrix.max() / 2.
-# for i in range(conf_matrix.shape[0]):
-#     for j in range(conf_matrix.shape[1]):
-#         plt.text(j, i, format(conf_matrix[i, j], 'd'),
-#                  horizontalalignment="center",
-#                  color="white" if conf_matrix[i, j] > thresh else "black")
-
-# plt.tight_layout()
-# plt.show()
-# """
+#%%
+# Graficar la precisión promedio en validación cruzada para cada profundidad
+plt.figure(figsize=(10, 5))
+plt.plot(depths, mean_scores, marker='o', color='blue')
+plt.title('Precisión Media en Validación Cruzada vs. Profundidad del Árbol')
+plt.xlabel('Profundidad del Árbol')
+plt.ylabel('Precisión Media')
+plt.xticks(depths)
+plt.grid(True)
+plt.show()
 
