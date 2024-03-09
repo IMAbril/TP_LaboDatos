@@ -22,7 +22,7 @@ carpeta = '/home/francisco/Documents/Labo de Datos/TP02/Archivos Python/'
 data = pd.read_csv(carpeta+'sign_mnist_train (1).csv')
 
 #%%
-#A partir del dataframe original, construimos un nuevo dataframe que contenga sólo al subconjunto de imágenes correspondientes a señas de las letras L o A.
+#A partir del dataframe original, construimos un nuevo dataframe que contenga sólo al subconjunto de imágenes correspondientes a las letras vocales.
 data_vocales = sign[(sign['label'] == 0) | (sign['label'] == 4) | (sign['label'] == 8) | (sign['label'] == 13) | (sign['label'] == 19)]
 
 
@@ -80,12 +80,32 @@ print(f"Precisión en el conjunto de test: {test_accuracy}")
 
 #%%
 # Graficar la precisión promedio en validación cruzada para cada profundidad
-plt.figure(figsize=(10, 5))
-plt.plot(depths, mean_scores, marker='o', color='blue')
+plt.figure(figsize=(8, 5))
+plt.plot(depths, mean_scores, marker='o', color='green')
 plt.title('Precisión Media en Validación Cruzada vs. Profundidad del Árbol')
 plt.xlabel('Profundidad del Árbol')
 plt.ylabel('Precisión Media')
 plt.xticks(depths)
 plt.grid(True)
 plt.show()
+
+
+#%%
+# Genera las predicciones y la matriz de confusión
+y_pred = best_clf.predict(X_test)
+conf_mat = confusion_matrix(y_test, y_pred)
+
+# Crea un DataFrame de pandas para la matriz de confusión
+conf_mat_df = pd.DataFrame(conf_mat, index=['A', 'E', 'I', 'O', 'U'], columns=['A', 'E', 'I', 'O', 'U'])
+
+# Crea el gráfico de la matriz de confusión
+plt.figure(figsize=(10, 8))
+sns.heatmap(conf_mat_df, annot=True, fmt='d', cmap='coolwarm', cbar=True, linewidths=0.5, linecolor='black')
+plt.title('Matriz de Confusión', fontsize=20)
+plt.xlabel('Predicciones', fontsize=15)
+plt.ylabel('Valores Reales', fontsize=15)
+plt.xticks(fontsize=12)
+plt.yticks(fontsize=12, rotation=0)
+plt.show()
+
 
