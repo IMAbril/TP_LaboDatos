@@ -12,7 +12,7 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt 
 import random 
 import pandas as pd
-
+import numpy as np
 
 
 #A partir del dataframe original, construimos un nuevo dataframe que contenga sólo al subconjunto de imágenes correspondientes a señas de las letras L o A.
@@ -41,11 +41,6 @@ y = data_L_A['label']
 # Separamos en 80% entrenamiento y 20% prueba 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=5)
 
-"""
-Ajustar un modelo KNN considerando pocos atributos, por ejemplo 3.
-Probar con distintos conjuntos de 3 atributos y comparar resultados.
-Analizar utilizando otras cantidades de atributos 
-"""
 
 #Como queremos probar con distintos conjuntos de tres atributos, listamos todos los atributos
 
@@ -58,10 +53,11 @@ k = 5
 scores = []
 modelo = []
 atributos_elegidos = []
+
+#ACÁ VARIAMOS LOS CONJUNTOS DE ATRIBUTOS
 # Probamos con distintos conjuntos de tres atributos y comparamos resultados
 for i in range(5):   #Iteramos 5 veces
-    columnas_Al_Azar= random.sample(lista_columnas, 3)
-    random.state = 5 #seleccionamos columnas al azar
+    columnas_Al_Azar= random.sample(lista_columnas,3) #seleccionamos columnas al azar
     neigh = KNeighborsClassifier(n_neighbors=k) #iniciamos el modelo
     neigh.fit(X_train[columnas_Al_Azar], y_train) #lo entrenamos con las columnas seleccionadas
     score = neigh.score(X_test[columnas_Al_Azar], y_test)#lo evaluamos
@@ -93,54 +89,45 @@ plt.ylabel('Score')
 plt.show()
 
 #%%
-"""
-Comparar modelos de KNN utilizando distintos atributos y distintos
-valores de k (vecinos). Para el análisis de los resultados, tener en
-cuenta las medidas de evaluación (por ejemplo, la exactitud) y la
-cantidad de atributos.
-"""
+#AHORA VAMOS A VARIAR LA CANTIDAD DE ATRIBUTOS
 
-#Ahora vamos a comparar distintos modelos variando atributos y valores de K
+# Probamos con distintos conjuntos de tres atributos y comparamos resultados
 
-#Declaramos nuevamente las variables
-X = data_L_A.drop('label', axis=1)  #Conservamos todas las columnas excepto 'label'
-y = data_L_A['label']
+# Supongamos que ya tienes X, Y y lista_columnas definidos
+X = data_L_A.drop('label', axis=1)  # Conservamos todas las columnas excepto 'label'
+Y = data_L_A['label']
 
-random_state = 5
-# Generar una lista de 10 numeros aleatorios entre 1 y 99
-lista_atributos = [random.randint(1, 99) for _ in range(10)]
+# Dividimos en test(30%) y train(70%)
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
 
-print(lista_atributos)
+# Rango de valores por los que se va a mover k
+valores_k = range(1, 10)
 
-#Inicializamos dos variables para luego realizar graficos
+# AHORA VAMOS A VARIAR LA CANTIDAD DE ATRIBUTOS
+lista_columnas = X.columns.tolist()
+
+# Inicializamos dos variables para luego realizar gráficos
 atributos = []
 scores = []
 
-for k in range(1, 50):
-        for n in lista_atributos:
-           cant_atributos = n
-           columnas_Al_Azar = random.sample(lista_columnas, cant_atributos)#seleccionamos columnas al azar
-           neigh = KNeighborsClassifier(n_neighbors=k) #iniciamos el modelo
-           neigh.fit(X_train[columnas_Al_Azar], y_train) #lo entrenamos con las columnas seleccionadas
-           score = neigh.score(X_test[columnas_Al_Azar], y_test)#lo evaluamos
-           scores.append(score)
-           atributos.append(cant_atributos)
-           print(f'Score del modelo: {score:.2}, cantidad de vecinos: {k}, cantidad de atributos: {cant_atributos}')
+for cant_atributos in range(1, 9):  # Probamos con atributos desde 1 a 5
+    scores_atributos = []  # Guardamos los scores por cantidad de atributos
+    for i in range(5):  # Iteramos 5 veces por conjunto de atributos
+        random.seed(5)
+        columnas_Al_Azar = random.sample(lista_columnas, cant_atributos)
+        neigh = KNeighborsClassifier(n_neighbors=5)  # Iniciamos el modelo con k=5
+        neigh.fit(X_train[columnas_Al_Azar], y_train)  # Entrenamos con las columnas seleccionadas
+        score = neigh.score(X_test[columnas_Al_Azar], y_test)  # Evaluamos el modelo
+        scores_atributos.append(score)
+    prom_score = np.mean(scores_atributos) #Calculamos el promedio de los score por atributos
+    scores.append(prom_score) #guardamos info para grafico
+    atributos.append(cant_atributos)
+    print(f'Promedio de score para {cant_atributos} atributos: {prom_score:.2f}')
 
-
-# Realizamos el gráfico de Score en función del número de vecinos
-plt.plot(range(1, 50), scores[:49], marker='o', linestyle='-', color='violet')
-plt.title('Score del Modelo en Función del Número de Vecinos')
-plt.xlabel('Número de Vecinos (k)')
-plt.ylabel('Score')
-plt.grid(True)
-plt.show()
-
-# Realizamos el gráfico de score en función de la cantidad de atributos
-plt.scatter(atributos, scores, marker='o', color='orange')
+# Graficamos el rendimiento en función de la cantidad de atributos
+plt.plot(atributos, scores, marker='o', linestyle='-', color='blue')
 plt.title('Score del Modelo en Función de la Cantidad de Atributos')
 plt.xlabel('Cantidad de Atributos')
-plt.ylabel('Score')
+plt.ylabel('Score Promedio')
 plt.grid(True)
 plt.show()
-
