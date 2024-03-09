@@ -9,7 +9,6 @@ Created on Fri Mar  8 17:00:02 2024
 import pandas as pd
 import numpy as np
 from graficos import sign, cantMuestras
-from sklearn.neighbors import KNeighborsClassifier
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.metrics import classification_report, confusion_matrix
