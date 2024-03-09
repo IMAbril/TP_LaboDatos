@@ -127,6 +127,35 @@ for cant_atributos in range(1, 9):  # Probamos con atributos desde 1 a 5
 # Graficamos el rendimiento en función de la cantidad de atributos
 plt.plot(atributos, scores, marker='o', linestyle='-', color='blue')
 plt.title('Score del Modelo en Función de la Cantidad de Atributos')
+
+#%%
+
+#AHORA VAMOR A VARIAR LOS VALORES DE K
+X = data_L_A.drop('label', axis=1)  # Conservamos todas las columnas excepto 'label'
+Y = data_L_A['label']
+
+valores_k = range(1, 9)
+scores_k = []
+
+# Iteramos sobre diferentes valores de k
+for k in valores_k:
+    random.seed(6)
+    columnas_Al_Azar = random.sample(lista_columnas, 3)
+    neigh = KNeighborsClassifier(n_neighbors=k)
+    neigh.fit(X_train[columnas_Al_Azar], y_train)
+    score = neigh.score(X_test[columnas_Al_Azar], y_test)
+    scores_k.append(score)
+    print(f'Score del modelo con k={k}: {score:.2}, Atributos Elegidos: {columnas_Al_Azar}')
+
+# Graficamos el rendimiento en función de k
+plt.plot(valores_k, scores_k, marker='o', linestyle='-', color='green')
+plt.title('Score del Modelo en Función de k, con 3 atributos')
+plt.xlabel('Número de Vecinos (k)')
+plt.ylabel('Score')
+plt.grid(True)
+plt.show()
+
+
 plt.xlabel('Cantidad de Atributos')
 plt.ylabel('Score Promedio')
 plt.grid(True)
