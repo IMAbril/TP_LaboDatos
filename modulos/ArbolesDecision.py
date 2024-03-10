@@ -42,50 +42,71 @@ print('Las clases están balanceadas, pues al compararlas todas obtenemos un val
 X = data_vocales.drop(['label'], axis=1)
 y = data_vocales['label']
 
-#Separamos en un conjunto de entrenamiento y otro de validación. Colocamos una semilla, con random-state
-# Separamos en 80% entrenamiento y 20% prueba 
-X_train, X_test, y_train, y_test = train_test_split(X, y, shuffle=True, test_size=0.2, random_state=10)
+# Separamos en un conjunto de entrenamiento y otro de validación. Colocamos una semilla, con random-state
+# Separamos en 80% train y 20% test 
+X_train, X_test, y_train, y_test = train_test_split(X, y, shuffle=True, test_size=0.2, random_state=5)
 
-# Crear y ajustar modelos de árbol de decisión con diferentes profundidades
+arbol = DecisionTreeClassifier()
+arbol.fit(X_train, y_train)# Crear y ajustar modelos de árbol de decisión con diferentes profundidades
 # Vamos a analizar profundidades de árbol de 1 a 15
 depths = range(1, 16)
 mean_scores = []
 
 for depth in depths:
-    # Crear el modelo de árbol de decisión
-    clf = DecisionTreeClassifier(max_depth=depth, random_state=5)
-    
-    # Realizar validación cruzada con k-folding (k = 5)
-    scores = cross_val_score(clf, X_train, y_train, cv=5)
-    
-    # Calcular el promedio de los puntajes de validación cruzada
+    # Creamos el modelo de árbol de decisión
+    arbol = DecisionTreeClassifier(max_depth=depth, random_state=5)
+    # Hacemos validación cruzada con k-folding (k = 5)
+    scores = cross_val_score(arbol, X_train, y_train, cv=5)
+    # Calculamos el promedio de los puntajes de validación cruzada
     mean_score = np.mean(scores)
     mean_scores.append(mean_score)
+
     
     print(f"Profundidad: {depth}, Precisión Media: {mean_score}")
-
-#%% 
-
-hyper_params = {'criterion' : ["gini", "entropy"],
-                'max_depth' : [2,3,4,5,6,7,8]
-               }
-
-# Búsqueda aleatoria con el árbol de decisión y el espacio de hiperparámetros
-clf = RandomizedSearchCV(DecisionTreeClassifier(random_state=5), hyper_params, random_state=0, n_iter=8)
-
-# Realizar la búsqueda aleatoria de hiperparámetros en los datos de entrenamiento
-search = clf.fit(X_train, y_train)
-
-# Obtener los mejores parámetros encontrados durante la búsqueda
-best_params = search.best_params_
-print("Mejores hiperparámetros encontrados:", best_params)
-
-# Obtener la mejor puntuación obtenida durante la búsqueda
-best_score = search.best_score_
-print("Mejor puntuación durante la búsqueda:", best_score)
+    
 
 #%%
-# Graficar la precisión promedio en validación cruzada para cada profundidad
+
+resultados_modelos = []
+# Evaluamos cada modelo en el conjunto de test
+for modelo in depths:
+    # Entrenamos los arboles, con las mismas alturas y semilla para obtener los mismos arboles que antes
+    arbol = DecisionTreeClassifier(max_depth=depth, random_state=5)
+    arbol.fit(X_train, y_train)
+    # Generamos las predicciones en el conjunto de test
+    y_predict_test = arbol.predict(X_test)
+    
+    # Calculamos la precisión del modelo en el conjunto de test
+    accuracy_test = accuracy_score(y_test, y_predict_test)
+    
+    # Calculamos el informe de clasificación en el conjunto de test
+    classification_rep_test = classification_report(y_test, y_predict_test)
+    
+    # Calculamos la matriz de confusión en el conjunto de test
+    conf_mat_test = confusion_matrix(y_test, y_predict_test)
+    
+    # Guardamos las métricas del modelo en una lista
+    resultados_modelos.append({
+        'modelo': arbol,
+        'precision': accuracy_test,
+        'informe_clasificacion': classification_rep_test,
+        'matriz_confusion': conf_mat_test
+    })
+
+# Buscamos el modelo con la mejor precisión en el conjunto de test
+mejor_modelo = max(resultados_modelos, key=lambda x: x['precision'])
+
+
+# Imprimimos las métricas del mejor modelo para saber todos sus datos
+print(f"Precisión en conjunto de test: {mejor_modelo['precision']}")
+print("Informe de clasificación en conjunto de test:")
+print(mejor_modelo['informe_clasificacion'])
+print("Matriz de confusión en conjunto de test:")
+print(mejor_modelo['matriz_confusion'])
+
+
+#%%
+# Graficamos la precisión promedio en validación cruzada para cada profundidad
 plt.figure(figsize=(8, 5))
 plt.plot(depths, mean_scores, marker='o', color='green')
 plt.title('Precisión Media en Validación Cruzada vs. Profundidad del Árbol')
@@ -95,34 +116,11 @@ plt.xticks(depths)
 plt.grid(True)
 plt.show()
 
-
 #%%
-# Genera las predicciones en el conjunto de prueba utilizando el mejor modelo encontrado
-y_pred_test = search.best_estimator_.predict(X_test)
+# Creamos un DataFrame de pandas para la matriz de confusión
+conf_mat_df = pd.DataFrame(conf_mat_test, index=['A', 'E', 'I', 'O', 'U'], columns=['A', 'E', 'I', 'O', 'U'])
 
-# Evalúa la precisión del modelo en el conjunto de prueba
-accuracy_test = accuracy_score(y_test, y_pred_test)
-print("Precisión en el conjunto de prueba:", accuracy_test)
-
-# Genera el informe de clasificación multiclase
-classification_rep = classification_report(y_test, y_pred_test)
-print("Informe de clasificación en el conjunto de prueba:\n", classification_rep)
-
-# Genera la matriz de confusión
-conf_mat_test = confusion_matrix(y_test, y_pred_test)
-conf_mat_df_test = pd.DataFrame(conf_mat_test, index=['A', 'E', 'I', 'O', 'U'], columns=['A', 'E', 'I', 'O', 'U'])
-print("Matriz de confusión en el conjunto de prueba:\n", conf_mat_df_test)
-
-#%%
-# Genero el grafico
-# Genera las predicciones y la matriz de confusión
-y_pred = search.best_estimator_.predict(X_test)
-conf_mat = confusion_matrix(y_test, y_pred)
-
-# Crea un DataFrame de pandas para la matriz de confusión
-conf_mat_df = pd.DataFrame(conf_mat, index=['A', 'E', 'I', 'O', 'U'], columns=['A', 'E', 'I', 'O', 'U'])
-
-# Crea el gráfico de la matriz de confusión
+# Creamos el gráfico de la matriz de confusión
 plt.figure(figsize=(12, 6))
 sns.heatmap(conf_mat_df, annot=True, fmt='d', cmap='coolwarm', cbar=True, linewidths=0.5, linecolor='black')
 plt.title('Matriz de Confusión', fontsize=20)
@@ -131,3 +129,4 @@ plt.ylabel('Valores Reales', fontsize=15)
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12, rotation=0)
 plt.show()
+
