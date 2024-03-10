@@ -152,9 +152,3 @@ plt.xlabel('Número de Vecinos (k)')
 plt.ylabel('Score')
 plt.grid(True)
 plt.show()
-
-
-plt.xlabel('Cantidad de Atributos')
-plt.ylabel('Score Promedio')
-plt.grid(True)
-plt.show()
