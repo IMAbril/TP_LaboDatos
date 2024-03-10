@@ -70,7 +70,7 @@ hyper_params = {'criterion' : ["gini", "entropy"],
                 'max_depth' : [2,3,4,5,6,7,8]
                }
 
-# Inicializar el clasificador de búsqueda aleatoria con el árbol de decisión y el espacio de hiperparámetros
+# Búsqueda aleatoria con el árbol de decisión y el espacio de hiperparámetros
 clf = RandomizedSearchCV(DecisionTreeClassifier(random_state=5), hyper_params, random_state=0, n_iter=8)
 
 # Realizar la búsqueda aleatoria de hiperparámetros en los datos de entrenamiento
