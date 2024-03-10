@@ -10,12 +10,12 @@ import pandas as pd
 import numpy as np
 from graficos import sign, cantMuestras
 import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.model_selection import train_test_split, cross_val_score, RandomizedSearchCV
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
+import seaborn as sns
 import random
-
 
 # Cargar los datos desde el archivo CSV
 carpeta = '/home/francisco/Documents/Labo de Datos/TP02/Archivos Python/'
@@ -64,19 +64,25 @@ for depth in depths:
     
     print(f"Profundidad: {depth}, Precisión Media: {mean_score}")
 
-# Seleccionar la mejor profundidad del árbol
-best_depth_index = np.argmax(mean_scores)
-best_depth = depths[best_depth_index]
-print(f"Mejor Profundidad: {best_depth}")
+#%% 
 
-# Entrenar el modelo de árbol de decisión con la mejor profundidad
-best_clf = DecisionTreeClassifier(max_depth=best_depth, random_state=10)
-best_clf.fit(X_train, y_train)
+hyper_params = {'criterion' : ["gini", "entropy"],
+                'max_depth' : [2,3,4,5,6,7,8]
+               }
 
-# Evaluar el modelo en el conjunto de prueba
-y_pred = best_clf.predict(X_test)
-test_accuracy = accuracy_score(y_test, y_pred)
-print(f"Precisión en el conjunto de test: {test_accuracy}")
+# Inicializar el clasificador de búsqueda aleatoria con el árbol de decisión y el espacio de hiperparámetros
+clf = RandomizedSearchCV(DecisionTreeClassifier(random_state=5), hyper_params, random_state=0, n_iter=8)
+
+# Realizar la búsqueda aleatoria de hiperparámetros en los datos de entrenamiento
+search = clf.fit(X_train, y_train)
+
+# Obtener los mejores parámetros encontrados durante la búsqueda
+best_params = search.best_params_
+print("Mejores hiperparámetros encontrados:", best_params)
+
+# Obtener la mejor puntuación obtenida durante la búsqueda
+best_score = search.best_score_
+print("Mejor puntuación durante la búsqueda:", best_score)
 
 #%%
 # Graficar la precisión promedio en validación cruzada para cada profundidad
@@ -91,15 +97,33 @@ plt.show()
 
 
 #%%
+# Genera las predicciones en el conjunto de prueba utilizando el mejor modelo encontrado
+y_pred_test = search.best_estimator_.predict(X_test)
+
+# Evalúa la precisión del modelo en el conjunto de prueba
+accuracy_test = accuracy_score(y_test, y_pred_test)
+print("Precisión en el conjunto de prueba:", accuracy_test)
+
+# Genera el informe de clasificación multiclase
+classification_rep = classification_report(y_test, y_pred_test)
+print("Informe de clasificación en el conjunto de prueba:\n", classification_rep)
+
+# Genera la matriz de confusión
+conf_mat_test = confusion_matrix(y_test, y_pred_test)
+conf_mat_df_test = pd.DataFrame(conf_mat_test, index=['A', 'E', 'I', 'O', 'U'], columns=['A', 'E', 'I', 'O', 'U'])
+print("Matriz de confusión en el conjunto de prueba:\n", conf_mat_df_test)
+
+#%%
+# Genero el grafico
 # Genera las predicciones y la matriz de confusión
-y_pred = best_clf.predict(X_test)
+y_pred = search.best_estimator_.predict(X_test)
 conf_mat = confusion_matrix(y_test, y_pred)
 
 # Crea un DataFrame de pandas para la matriz de confusión
 conf_mat_df = pd.DataFrame(conf_mat, index=['A', 'E', 'I', 'O', 'U'], columns=['A', 'E', 'I', 'O', 'U'])
 
 # Crea el gráfico de la matriz de confusión
-plt.figure(figsize=(10, 8))
+plt.figure(figsize=(12, 6))
 sns.heatmap(conf_mat_df, annot=True, fmt='d', cmap='coolwarm', cbar=True, linewidths=0.5, linecolor='black')
 plt.title('Matriz de Confusión', fontsize=20)
 plt.xlabel('Predicciones', fontsize=15)
@@ -107,5 +131,3 @@ plt.ylabel('Valores Reales', fontsize=15)
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12, rotation=0)
 plt.show()
-
-
