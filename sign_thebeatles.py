@@ -13,8 +13,7 @@ Contenido : En las siguientes lineas se encuentra el proceso llevado a cabo y do
 # IMPORT módulos 
 # =============================================================================
 import pandas as pd
-import KNN
-import exploracion 
+from modulos import KNN, exploracion 
 #%% =============================================================================
 # Cargamos los datos
 # =============================================================================
@@ -72,4 +71,8 @@ KNN.clasificador_3Atributos_Variables()#Muestra gráfico obtenido y una tabla co
 #%%
 #Probamos como varía el rendimiento de acuerdo al K elegido  
 KNN.clasificador_K_Variable() #Muestra grafico obtenido e imprime información
+
+
+
+
 
