@@ -16,7 +16,7 @@ import seaborn as sns
 #%%
 #Cargamos archivo csv
 
-carpeta = '/Users/Roju2/OneDrive/Desktop/tp2/'
+carpeta = './datasets/'
 sign = pd.read_csv(carpeta+'sign_mnist_train.csv')
 
 
