@@ -13,7 +13,7 @@ Contenido : En las siguientes lineas se encuentra el proceso llevado a cabo y do
 # IMPORT módulos 
 # =============================================================================
 import pandas as pd
-from modulos import KNN, exploracion 
+from modulos import KNN, exploracion, ArbolesDecision
 #%% =============================================================================
 # Cargamos los datos
 # =============================================================================
@@ -72,7 +72,25 @@ KNN.clasificador_3Atributos_Variables()#Muestra gráfico obtenido y una tabla co
 #Probamos como varía el rendimiento de acuerdo al K elegido  
 KNN.clasificador_K_Variable() #Muestra grafico obtenido e imprime información
 
+#%%=============================================================================
+#CLASIFICACIÓN MULTICLASE
+#===============================================================================
 
+#Desarrollamos un modelo que pudiera clasificar una imagen de acuerdo a que vocal es.
+#Para ello, implementamos un arbol de decision
 
+#Primero comenzamos conociendo la distribución de las clases.
+ArbolesDecision.vocales()
 
+#%%
 
+#Luego construimos modelos y evaluamos cual sería una profundidad adecuada
+ArbolesDecision.profundidad_arbol()
+#se imprimen las profundidades, score y una matriz de confusion
+#Además se obtiene el gráfico de la Matriz de confusion
+
+#Por ultimo realizamos gráficos que reflejaran lo obtenido para un mejor analisis
+
+ArbolesDecision.grafico_Exactitud_promedio()
+
+#%%
