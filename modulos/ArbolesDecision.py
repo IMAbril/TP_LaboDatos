@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Fri Mar  8 17:00:02 2024
-
-@author: francisco
+Trabajo Práctico N°2
+laboratorio de Datos - Verano 2024
+Autores : Ibarra, Abril; Vassolo, Francisco; Dominguez,Rocio
+Nombre del grupo: The Beatles 
+Fecha : Marzo 2024
 """
 
 import pandas as pd
@@ -18,7 +20,7 @@ import seaborn as sns
 import random
 
 # Cargar los datos desde el archivo CSV
-carpeta = '/home/francisco/Documents/Labo de Datos/TP02/Archivos Python/'
+carpeta = './datasets/'
 data = pd.read_csv(carpeta+'sign_mnist_train (1).csv')
 
 #%%
