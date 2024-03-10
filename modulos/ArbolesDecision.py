@@ -105,6 +105,19 @@ def profundidad_arbol():
     print("Matriz de confusión en conjunto de test:")
     print(mejor_modelo['matriz_confusion'])
     
+    conf_mat_df = pd.DataFrame(conf_mat_test, index=['A', 'E', 'I', 'O', 'U'], columns=['A', 'E', 'I', 'O', 'U'])
+    
+    # Creamos el gráfico de la matriz de confusión
+    plt.figure(figsize=(12, 6))
+    sns.heatmap(conf_mat_df, annot=True, fmt='d', cmap='coolwarm', cbar=True, linewidths=0.5, linecolor='black')
+    plt.title('Matriz de Confusión', fontsize=20)
+    plt.xlabel('Predicciones', fontsize=15)
+    plt.ylabel('Valores Reales', fontsize=15)
+    plt.xticks(fontsize=12)
+    plt.yticks(fontsize=12, rotation=0)
+    plt.show()
+
+    
     
 # %%
 def grafico_Exactitud_promedio():    
@@ -118,18 +131,3 @@ def grafico_Exactitud_promedio():
     plt.grid(True)
     plt.show()
 
-# %%
-# Creamos un DataFrame de pandas para la matriz de confusión
- 
-def crear_Matriz():  
-    conf_mat_df = pd.DataFrame(conf_mat_test, index=['A', 'E', 'I', 'O', 'U'], columns=['A', 'E', 'I', 'O', 'U'])
-    
-    # Creamos el gráfico de la matriz de confusión
-    plt.figure(figsize=(12, 6))
-    sns.heatmap(conf_mat_df, annot=True, fmt='d', cmap='coolwarm', cbar=True, linewidths=0.5, linecolor='black')
-    plt.title('Matriz de Confusión', fontsize=20)
-    plt.xlabel('Predicciones', fontsize=15)
-    plt.ylabel('Valores Reales', fontsize=15)
-    plt.xticks(fontsize=12)
-    plt.yticks(fontsize=12, rotation=0)
-    plt.show()
