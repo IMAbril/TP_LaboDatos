@@ -96,6 +96,8 @@ for modelo in depths:
 # Buscamos el modelo con la mejor precisión en el conjunto de test
 mejor_modelo = max(resultados_modelos, key=lambda x: x['precision'])
 
+profundidad_mejor_modelo = mejor_modelo['modelo'].max_depth
+print("Profundidad del mejor modelo:", profundidad_mejor_modelo)
 
 # Imprimimos las métricas del mejor modelo para saber todos sus datos
 print(f"Precisión en conjunto de test: {mejor_modelo['precision']}")
