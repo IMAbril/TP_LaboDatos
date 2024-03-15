@@ -34,33 +34,52 @@ def muestras():
     print('Las clases están balanceadas, pues al compararlas obtenemos un valor muy cercano a uno : ', round(diferenciaMuestral,2))
 
 #%%
+#Para probar con distintos conjuntos de tres atributos, teniendo en cuenta la variabilidad pixel a pixel entre las muestras de cada letra
+#Vamos a considerar aquellos con mayor, menor y variabilidad intermedia 
 
 informacion_df = data_L_A.describe()
 
 varianza_pixels = informacion_df.loc['std']
 
+#Buscamos los mas grandes
+
 indices_mas_grandes = []
 
-for i in range(3):
-    indices_mas_grandes.append(varianza_pixels.idxmax())
-    varianza_pixels = varianza_pixels.drop(varianza_pixels.idxmax())
+serieMax = varianza_pixels.copy()
 
+for j in range(3):
+    indices_mas_grandes.append(serieMax.idxmax())
+    serieMax = serieMax.drop(serieMax.idxmax())  # Elimina el mínimo y actualiza la Serie
+print(indices_mas_grandes)
 
-X = data_L_A.drop('label', axis=1)  #Conservamos todas las columnas excepto 'label'
-y = data_L_A['label']
+#Buscamos los mas pequeños
+indices_mas_pequeños = []
 
-"""
-Separar os datos en conjuntos de train y test.
-d. Ajustar un modelo de KNN considerando pocos atributos, por ejemplo
-3. Probar con distintos conjuntos de 3 atributos y comparar resultados.
-Analizar utilizando otras cantidades de atributos.
-"""
+serieMin = varianza_pixels.copy()
+serieMin = serieMin.drop('label')  # Elimina la etiqueta 'label' y actualiza la Serie
 
+for j in range(3):
+    indices_mas_pequeños.append(serieMin.idxmin())
+    
+    serieMin = serieMin.drop(serieMin.idxmin())  # Elimina el mínimo y actualiza la Serie
 
-#Ahora separo en conjuntos de train y test, utilizando un 20% de los datos para 
+print(indices_mas_pequeños)
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=5,
-                                                    shuffle=True, stratify= y)
+#Buscamos los intermedios 
+
+serieMed =varianza_pixels.copy()
+#serieMed =serieMed.drop('label')
+indices_medianos = []
+for k in range(3):
+    # Calcula la mediana
+    mediana = np.median(serieMed)
+    for clave, valor in serieMed.items():
+        if valor == mediana:
+            indices_medianos.append(clave)
+    
+    serieMed = serieMed.drop(clave)
+
+print(indices_medianos)
 
 
 
