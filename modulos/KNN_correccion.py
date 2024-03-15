@@ -45,52 +45,84 @@ varianza_pixels = informacion_df.loc['std']
 
 indices_mas_grandes = []
 
-serieMax = varianza_pixels.copy()
-
-for j in range(3):
-    indices_mas_grandes.append(serieMax.idxmax())
-    serieMax = serieMax.drop(serieMax.idxmax())  # Elimina el mínimo y actualiza la Serie
-print(indices_mas_grandes)
-
+def get_indices_mas_grandes():        
+        serieMax = varianza_pixels.copy()
+        
+        for j in range(3):
+            indices_mas_grandes.append(serieMax.idxmax())
+            serieMax = serieMax.drop(serieMax.idxmax())  # Elimina el maximo y actualiza la Serie
+        return indices_mas_grandes
+get_indices_mas_grandes() 
 #Buscamos los mas pequeños
-indices_mas_pequeños = []
+indices_mas_chicos = []
 
-serieMin = varianza_pixels.copy()
-serieMin = serieMin.drop('label')  # Elimina la etiqueta 'label' y actualiza la Serie
-
-for j in range(3):
-    indices_mas_pequeños.append(serieMin.idxmin())
-    
-    serieMin = serieMin.drop(serieMin.idxmin())  # Elimina el mínimo y actualiza la Serie
-
-print(indices_mas_pequeños)
-
-#Buscamos los intermedios 
-
-serieMed =varianza_pixels.copy()
-#serieMed =serieMed.drop('label')
+def get_indices_mas_chicos():
+    for j in range(3):                
+        serieMin = varianza_pixels.copy()
+        serieMin = serieMin.drop('label')  # Elimina la etiqueta 'label' y actualiza la Serie
+        indices_mas_chicos.append(serieMin.idxmin())    
+        serieMin = serieMin.drop(serieMin.idxmin())  # Elimina el mínimo y actualiza la Serie
+    return indices_mas_chicos
+get_indices_mas_chicos()
+#Buscamos los intermedios
+#Para ello, ordenamos, buscamos la mediana, el siguiente y el anterior 
 indices_medianos = []
-for k in range(3):
-    # Calcula la mediana
-    mediana = np.median(serieMed)
-    for clave, valor in serieMed.items():
-        if valor == mediana:
-            indices_medianos.append(clave)
+def get_indices_medianos():
+    serieMed =varianza_pixels.copy()
+    serieMed = pd.DataFrame(serieMed)     # Convertir a DataFrame
+    serieMed_ordenado = serieMed.sort_values(by='std') #ordenamos de acuerdo al 'std'
+
+    mediana_index = len(serieMed_ordenado) // 2 #calculamos mediana
+    mediana = serieMed_ordenado.iloc[mediana_index]['std']
+    indices_medianos.append( serieMed_ordenado.index[mediana_index])
+    # Obtener el nombre del índice anterior a la mediana
+    indice_anterior = serieMed_ordenado.index[mediana_index - 1] if mediana_index > 0 else None
+    indices_medianos.append(indice_anterior)
+    # Obtener el nombre del índice siguiente a la mediana
+    indice_siguiente = serieMed_ordenado.index[mediana_index + 1] if mediana_index < len(serieMed_ordenado) - 1 else None
+    indices_medianos.append(indice_siguiente)
+    return indices_medianos
+
+get_indices_medianos()
+
+
+#%%
+
+
+"""
+Separar os datos en conjuntos de train y test.
+d. Ajustar un modelo de KNN considerando pocos atributos, por ejemplo
+3. Probar con distintos conjuntos de 3 atributos y comparar resultados.
+Analizar utilizando otras cantidades de atributos.
+"""
+#Ya tenemos los conjuntos de atributos, ajustamos un modelo de KNN y comparamos 
+
+#Ahora separo en conjuntos de train y test, utilizando un 20% de los datos para 
+X = data_L_A.drop('label', axis=1)  #Conservamos todas las columnas excepto 'label'
+y = data_L_A['label']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=5,
+                                                    shuffle=True, stratify= y)
+
+def KNN_3Atributos_menorVariabilidad():
+    k = 5
+    neigh = KNeighborsClassifier(n_neighbors= k) #iniciamos el modelo
+    neigh.fit(X_train[indices_mas_chicos],y_train) #entrenamos seleccionado tres atributos
+    score = neigh.score(X_test[indices_mas_chicos],y_test) #evaluamos
+    print(score)   
     
-    serieMed = serieMed.drop(clave)
 
-print(indices_medianos)
+def KNN_3Atributos_mayorVariabilidad():
+    k = 5
+    neigh = KNeighborsClassifier(n_neighbors= k) #iniciamos el modelo
+    neigh.fit(X_train[indices_mas_grandes],y_train) #entrenamos seleccionado tres atributos
+    score = neigh.score(X_test[indices_mas_grandes],y_test) #evaluamos
+    print(score)   
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+def KNN_3Atributos_variabilidadMedia():
+    k = 5
+    neigh = KNeighborsClassifier(n_neighbors= k) #iniciamos el modelo
+    neigh.fit(X_train[indices_medianos],y_train) #entrenamos seleccionado tres atributos
+    score = neigh.score(X_test[indices_medianos],y_test) #evaluamos
+    print(score)   
+    
