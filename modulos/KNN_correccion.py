@@ -14,6 +14,8 @@ import matplotlib.pyplot as plt
 import random 
 import numpy as np 
 import pandas as pd 
+from sklearn.decomposition import PCA
+import seaborn as sns
 
 carpeta = '/Users/Roju2/OneDrive/Desktop/'
 sign = pd.read_csv(carpeta +'sign_mnist_train.csv')
@@ -33,6 +35,24 @@ def muestras():
     
     diferenciaMuestral = cantidad_letra_A/cantidad_letra_L
     print('Las clases están balanceadas, pues al compararlas obtenemos un valor muy cercano a uno : ', round(diferenciaMuestral,2))
+
+#Vemos como se comportan las letras analizando sus componentes principales:       
+def comparar_A_L():   
+    X = data_L_A.drop('label', axis=1).values
+    y = data_L_A['label'].values 
+    pca = PCA(n_components=2)
+    X_pca = pca.fit_transform(X)
+    
+    plt.scatter(X_pca[y == 0, 0], X_pca[y == 0, 1], label='Letra A', s=7, color='violet')
+    plt.scatter(X_pca[y == 11, 0], X_pca[y == 11, 1], label='Letra L', s=7, color='green')
+    
+    plt.title('PCA: Comparación entre A y L')
+    plt.xlabel('Primera Componente')
+    plt.ylabel('Segunda Componente')
+    plt.legend()
+    plt.show()
+
+comparar_A_L()         
 
 #%%
 #Para probar con distintos conjuntos de tres atributos, teniendo en cuenta la variabilidad pixel a pixel entre las muestras de cada letra
