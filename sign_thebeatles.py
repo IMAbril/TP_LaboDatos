@@ -58,6 +58,10 @@ exploracion.comparar_E_L() #Compara dos letras distintas
 
 KNN.muestras() #Imprime las cantidad de muestras
 
+#Vemos el comportamiento de ambas clases analizando sus componentes principales
+KNN.comparar_A_L()
+
+
 #%%
 #Luego nos propusimos investigar que conjuntos  de atributos eran mejores para evaluar los modelos
 #Para ello tuvimos en cuenta la variabilidad pixel a pixel
