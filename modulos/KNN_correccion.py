@@ -104,7 +104,6 @@ y = data_L_A['label']
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=5,
                                                     shuffle=True, stratify= y)
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
 def KNN_3Atributos_menorVariabilidad():
     k = 5
