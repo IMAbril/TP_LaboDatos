@@ -118,3 +118,20 @@ def KNN_NAtributos_distintaVariabilidad_kfijo(k):
 
 modelos_porCantAtributos = KNN_NAtributos_distintaVariabilidad_kfijo(5)
 
+#%%
+#Ahora variamos el k de 1 a 20, con cantidad de atributos fija igual a 3
+
+def KNN_20Kvariable():
+    modelos_porK = pd.DataFrame()
+    for k in range(1, 21):
+        modelos = KNN_Natributos_distintavariabilidad_kfijo(k, 3)
+        modelos['k']= k
+        modelos_porK = pd.concat([modelos_porK, modelos], ignore_index=True)
+    return modelos_porK
+
+modelos_porK = KNN_20Kvariable()
+
+#%% Graficamos para comparar mejor
+
+
+    
