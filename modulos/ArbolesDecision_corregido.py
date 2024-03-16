@@ -51,7 +51,7 @@ def profundidad_arbol():
     X_dev, X_eval, y_dev, y_eval = train_test_split(X, y, shuffle=True, test_size=0.1, random_state=5)
     
     # Creamos y ajustamos modelos de árbol de decisión con diferentes profundidades
-    # Vamos a analizar profundidades de árbol de 1 a 8
+    # Vamos a analizar profundidades de árbol de 1 a 15
     mejor_modelo = None
     mejor_mean_score = 0
     mean_score = 0
@@ -75,7 +75,7 @@ def profundidad_arbol():
             mejor_modelo = arbol
             mejor_mean_score = mean_score
         
-        print(f"Profundidad: {depth}, Exactitud Media: {mean_score}, diferencia: {diferencia}")
+        print(f"Profundidad: {depth}, Precisión Media: {mean_score}, Diferencia: {diferencia}")
 
     # Nos decantamos por el modelo con altura 8 y lo evaluamos en los datos de eval
     print("---------------Validación del mejor modelo en datos nuevos (Eval)---------------")
