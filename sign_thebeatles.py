@@ -13,12 +13,12 @@ Contenido : En las siguientes lineas se encuentra el proceso llevado a cabo y do
 # IMPORT módulos 
 # =============================================================================
 import pandas as pd
-from modulos import KNN, exploracion, ArbolesDecision
+from modulos import KNN_correccion as KNN, exploracion, ArbolesDecision_corregido as Arbol
 #%% =============================================================================
 # Cargamos los datos
 # =============================================================================
-carpeta = '/Users/Roju2/OneDrive/Desktop/tp2/'
-sign_mnist = pd.read_csv(carpeta+'sign_mnist_train.csv')
+carpeta = '/Users/Roju2/OneDrive/Desktop/'
+sign = pd.read_csv(carpeta +'sign_mnist_train.csv')
 
 
 #%% =============================================================================
@@ -57,21 +57,46 @@ exploracion.comparar_E_L() #Compara dos letras distintas
 #Primero nos fijamos la proporción de muestras de cada letra
 
 KNN.muestras() #Imprime las cantidad de muestras
-#%%
-
-#Luego miramos cual sería el numero de atributos adecuado y cual el de K
-#%%
-#Creamos y entrenamos el modelo con k=5 y le pasamos distintos numeros de atributos
-KNN.clasificador_atributosVariables() #Muestra el grafico que representa lo obtenido e imprime 
 
 #%%
-#Probamos como varia el rendimiento de acuerdo a tomar conjuntos aleatorios de 3 atributos
-KNN.clasificador_3Atributos_Variables()#Muestra gráfico obtenido y una tabla con la informacion del print
+#Luego nos propusimos investigar que conjuntos  de atributos eran mejores para evaluar los modelos
+#Para ello tuvimos en cuenta la variabilidad pixel a pixel
+#consideramos 3 atributos
+
+KNN.KNN_3Atributos_mayorVariabilidad() #Imprime score obtenido
+
+KNN.KNN_3Atributos_variabilidadMedia() #imprime score obtenido
+
+KNN.KNN_3Atributos_menorVariabilidad() #imprime score obtenido
 
 #%%
-#Probamos como varía el rendimiento de acuerdo al K elegido  
-KNN.clasificador_K_Variable() #Muestra grafico obtenido e imprime información
+#Despues hicimos lo mismo, pero variando la cantidad de atributos
 
+KNN.KNN_AtributosVariables_mayorVariabilidad()
+
+KNN.KNN_AtributosVariables_variabilidadMedia()
+
+KNN.KNN_AtributosVariables_menorVariabilidad()
+
+#A continuacion se muestra un grafico de lo obtenido
+KNN.grafico_atributos_variables()
+
+#%%
+#Luego, variamos los valores de k, utilizando tres atributos
+
+KNN.KNN_k_variabilidadMayor()
+
+KNN.KNN_k_variabilidadMedia()
+
+KNN.KNN_k_variabilidadMenor()
+
+#A continuacion se muestra un grafico de lo obtenido
+KNN.grafico_k_variable()
+
+#%%
+#Por ultimo, realizamos cross validation para elegir el mejor modelo
+
+KNN.cross_validation()
 #%%=============================================================================
 #CLASIFICACIÓN MULTICLASE
 #===============================================================================
@@ -80,17 +105,12 @@ KNN.clasificador_K_Variable() #Muestra grafico obtenido e imprime información
 #Para ello, implementamos un arbol de decision
 
 #Primero comenzamos conociendo la distribución de las clases.
-ArbolesDecision.vocales()
+Arbol.vocales()
 
 #%%
 
 #Luego construimos modelos y evaluamos cual sería una profundidad adecuada
-ArbolesDecision.profundidad_arbol()
+Arbol.profundidad_arbol()
 #se imprimen las profundidades, score y una matriz de confusion
 #Además se obtiene el gráfico de la Matriz de confusion
 
-#Por ultimo realizamos gráficos que reflejaran lo obtenido para un mejor analisis
-
-ArbolesDecision.grafico_Exactitud_promedio()
-
-#%%
