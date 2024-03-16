@@ -8,7 +8,7 @@ Fecha : Marzo 2024
 """
 from modulos.exploracion import  cantMuestras
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split,cross_val_score, KFold
 import matplotlib.pyplot as plt 
 import random 
 import numpy as np 
@@ -340,4 +340,31 @@ def grafico_k_variable():
     plt.show()
 
 grafico_k_variable()
+#%%
+#realizamos cross validation para evaluar nuestro modelo
+
+#Para evaluar los modelos, realizamos cross validation para cada variabilidad utilizando tres atributos
+#Variabilidad media
+
+# Defino un nuevo modelo KNN,con k = 5, basamos nuestra decision en lo explorado en grafico_k_variable
+knn = KNeighborsClassifier(n_neighbors=5)
+
+
+kf = KFold(n_splits= 5, shuffle=True, random_state=5)
+
+# Realiza la validación cruzada para obtener los distintos rendimientos
+
+# Utilizando atributos con menor variabilidad
+scores_menor_var = cross_val_score(knn, X_train[indices_mas_chicos], y_train, cv=kf)
+
+# Utilizando atributos con mayor variabilidad
+scores_mayor_var = cross_val_score(knn, X_train[indices_mas_grandes], y_train, cv=kf)
+
+# Utilizando atributos con variabilidad media
+scores_var_media = cross_val_score(knn, X_train[indices_medianos], y_train, cv=kf)
+
+print( 'Score con atributos de menor variabilidad: ',scores_menor_var.mean())
+print("Score con atributos de mayor variabilidad:", scores_mayor_var.mean())
+print("Score con atributos de variabilidad media:", scores_var_media.mean())
+
 
