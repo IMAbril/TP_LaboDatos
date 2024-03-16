@@ -131,6 +131,27 @@ def KNN_20Kvariable():
 
 modelos_porK = KNN_20Kvariable()
 
+def grafico_k_variable():    
+    # Filtramos el DataFrame para obtener los datos de cada serie que vamos a graficar
+    var_intermedia = modelos_porK[modelos_porK['variabilidad'] == 'intermedia']
+    var_mayor = modelos_porK[modelos_porK['variabilidad'] == 'mayor']
+    var_menor = modelos_porK[modelos_porK['variabilidad'] == 'menor']
+    plt.figure(figsize=(10, 6))
+   
+    plt.plot(var_intermedia['k'], var_intermedia['mean_score'], label='Variabilidad Intermedio')
+    plt.plot(var_mayor['k'], var_mayor['mean_score'], label='Variabilidad Mayor')
+    plt.plot(var_menor['k'], var_menor['mean_score'], label='Variabilidad Menor')
+    
+    plt.title('Score del modelo en función de k y variabilidd de atributos')
+    plt.xlabel('Cantidad de Vecinos (k)')
+    plt.ylabel('Score')
+    plt.legend()  
+    plt.grid(True)  # colocamos grilla 
+    plt.show()
+
+grafico_k_variable()
+
+
 #%% Graficamos para comparar mejor
 
 
