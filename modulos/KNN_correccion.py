@@ -242,4 +242,74 @@ def KNN_AtributosVariables_variabilidadMedia():
     plt.ylabel('Score')
     plt.grid(True) #agregamos cuadricula para que sea mas facil visualizar
     plt.show()
-     
+
+#%%
+
+#Variamos k, para conocer cual es el valor que mejor ajusta
+
+def KNN_k_variabilidadMedia():
+    scores = []
+    k_elegido = []
+    for k in range(1,21):
+        neigh = KNeighborsClassifier(n_neighbors= k) #iniciamos el modelo
+        atributos = get_indices_medianos()
+        neigh.fit(X_train[atributos],y_train) #entrenamos seleccionado tres atributos
+        score = neigh.score(X_test[atributos],y_test) #evaluamos
+        scores.append(score)
+        k_elegido.append(k)
+        
+    #ahora graficamos los obtenido
+   
+    plt.scatter(k_elegido, scores, label='Scores', color = 'blue', s = 20)
+    plt.plot(k_elegido, scores, color='blue', linestyle='--', label='Línea de Tendencia')
+    plt.title('Score en función de k con 3 atributos de variabilidad media')
+    plt.xlabel('Cantidad de vecinos (k)')
+    plt.ylabel('Score')
+    plt.grid(True) #agregamos cuadricula para que sea mas facil visualizar
+    plt.show()
+    
+KNN_k_variabilidadMedia()
+def KNN_k_variabilidadMenor():
+    scores = []
+    k_elegido = []
+    for k in range(1,21):
+        neigh = KNeighborsClassifier(n_neighbors= k) #iniciamos el modelo
+        atributos = get_indices_mas_chicos()
+        neigh.fit(X_train[atributos],y_train) #entrenamos seleccionado tres atributos
+        score = neigh.score(X_test[atributos],y_test) #evaluamos
+        scores.append(score)
+        k_elegido.append(k)
+        
+    #ahora graficamos los obtenido
+   
+    plt.scatter(k_elegido, scores, label='Scores', color = 'orange', s = 20)
+    plt.plot(k_elegido, scores, color='orange', linestyle='--', label='Línea de Tendencia')
+    plt.title('Score en función de k con 3 atributos de menor variabilidad ')
+    plt.xlabel('Cantidad de vecinos (k)')
+    plt.ylabel('Score')
+    plt.grid(True) #agregamos cuadricula para que sea mas facil visualizar
+    plt.show()
+KNN_k_variabilidadMenor()    
+
+def KNN_k_variabilidadMayor():
+    scores = []
+    k_elegido = []
+    for k in range(1,21):
+        neigh = KNeighborsClassifier(n_neighbors= k) #iniciamos el modelo
+        atributos = get_indices_mas_grandes()
+        neigh.fit(X_train[atributos],y_train) #entrenamos seleccionado tres atributos
+        score = neigh.score(X_test[atributos],y_test) #evaluamos
+        scores.append(score)
+        k_elegido.append(k)
+        
+    #ahora graficamos los obtenido
+   
+    plt.scatter(k_elegido, scores, label='Scores', color = 'brown', s = 20)
+    plt.plot(k_elegido, scores, color='brown', linestyle='--', label='Línea de Tendencia')
+    plt.title('Score en función de k con 3 atributos de mayor variabilidad')
+    plt.xlabel('Cantidad de vecinos (k)')
+    plt.ylabel('Score')
+    plt.grid(True) #agregamos cuadricula para que sea mas facil visualizar
+    plt.show()
+KNN_k_variabilidadMayor()    
+
