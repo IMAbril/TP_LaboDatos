@@ -57,9 +57,10 @@ get_indices_mas_grandes()
 indices_mas_chicos = []
 
 def get_indices_mas_chicos():
+    serieMin = varianza_pixels.copy()
+    serieMin = serieMin.drop('label')  # Elimina la etiqueta 'label' y actualiza la Serie
+   
     for j in range(3):                
-        serieMin = varianza_pixels.copy()
-        serieMin = serieMin.drop('label')  # Elimina la etiqueta 'label' y actualiza la Serie
         indices_mas_chicos.append(serieMin.idxmin())    
         serieMin = serieMin.drop(serieMin.idxmin())  # Elimina el mínimo y actualiza la Serie
     return indices_mas_chicos
@@ -103,13 +104,14 @@ y = data_L_A['label']
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=5,
                                                     shuffle=True, stratify= y)
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
 def KNN_3Atributos_menorVariabilidad():
     k = 5
     neigh = KNeighborsClassifier(n_neighbors= k) #iniciamos el modelo
     neigh.fit(X_train[indices_mas_chicos],y_train) #entrenamos seleccionado tres atributos
     score = neigh.score(X_test[indices_mas_chicos],y_test) #evaluamos
-    print(score)   
+    print(f'Exactitud: {score}')
     
 
 def KNN_3Atributos_mayorVariabilidad():
@@ -117,12 +119,79 @@ def KNN_3Atributos_mayorVariabilidad():
     neigh = KNeighborsClassifier(n_neighbors= k) #iniciamos el modelo
     neigh.fit(X_train[indices_mas_grandes],y_train) #entrenamos seleccionado tres atributos
     score = neigh.score(X_test[indices_mas_grandes],y_test) #evaluamos
-    print(score)   
-
+    print(f'Exactitud: {score}')
+    
 def KNN_3Atributos_variabilidadMedia():
     k = 5
     neigh = KNeighborsClassifier(n_neighbors= k) #iniciamos el modelo
     neigh.fit(X_train[indices_medianos],y_train) #entrenamos seleccionado tres atributos
     score = neigh.score(X_test[indices_medianos],y_test) #evaluamos
-    print(score)   
+    print(f'Exactitud: {score}')
+
+#%%
+#Ahora vamos a ir variando la cantidad de atributos tomados
+
+n_mas_chicos = []
+def get_n_mas_chicos(n):
+    serieMin = varianza_pixels.copy()
+    serieMin = serieMin.drop('label')  # Elimina la etiqueta 'label' y actualiza la Serie
+   
+    for j in range(n):                
+        n_mas_chicos.append(serieMin.idxmin())    
+        serieMin = serieMin.drop(serieMin.idxmin())  # Elimina el mínimo y actualiza la Serie
+    return n_mas_chicos
+
+n_mas_grandes = []
+def get_n_mas_grandes(n):
+    serieMax = varianza_pixels.copy()
     
+    for j in range(n):
+        n_mas_grandes.append(serieMax.idxmax())
+        serieMax = serieMax.drop(serieMax.idxmax())  # Elimina el maximo y actualiza la Serie
+    return n_mas_grandes
+    
+def KNN_AtributosVariables_menorVariabilidad():
+    k = 5
+    scores = []
+    nro_atributos = []
+    for n in range(1,50):
+        k = 5
+        neigh = KNeighborsClassifier(n_neighbors= k) #iniciamos el modelo
+        atributos = get_n_mas_chicos(n)
+        neigh.fit(X_train[atributos],y_train) #entrenamos seleccionado tres atributos
+        score = neigh.score(X_test[atributos],y_test) #evaluamos
+        scores.append(score)
+        nro_atributos.append(n)
+        
+    #ahora graficamos los obtenido
+    
+    plt.scatter(nro_atributos, scores, label='Scores', color = 'red', s = 20)
+    plt.plot(nro_atributos, scores, color='red', linestyle='--', label='Línea de Tendencia')
+    plt.title('')
+    plt.xlabel('Cantidad de atributos')
+    plt.ylabel('Score')
+    plt.show()
+
+  
+def KNN_AtributosVariables_mayorVariabilidad():
+    k = 5
+    scores = []
+    nro_atributos = []
+    for n in range(1,50):
+        k = 5
+        neigh = KNeighborsClassifier(n_neighbors= k) #iniciamos el modelo
+        atributos = get_n_mas_grandes(n)
+        neigh.fit(X_train[atributos],y_train) #entrenamos seleccionado tres atributos
+        score = neigh.score(X_test[atributos],y_test) #evaluamos
+        scores.append(score)
+        nro_atributos.append(n)
+        
+    #ahora graficamos los obtenido
+   
+    plt.scatter(nro_atributos, scores, label='Scores', color = 'violet', s = 20)
+    plt.plot(nro_atributos, scores, color='violet', linestyle='--', label='Línea de Tendencia')
+    plt.title('')
+    plt.xlabel('Cantidad de atributos')
+    plt.ylabel('Score')
+    plt.show()
+ 
