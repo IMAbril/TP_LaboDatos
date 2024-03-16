@@ -133,7 +133,7 @@ def KNN_3Atributos_variabilidadMedia():
 
 n_mas_chicos = []
 def get_n_mas_chicos(n):
-    serieMin = varianza_pixels.copy()
+    serieMin = varianza_pixels.copy() #hacemos una copia para 
     serieMin = serieMin.drop('label')  # Elimina la etiqueta 'label' y actualiza la Serie
    
     for j in range(n):                
@@ -143,18 +143,40 @@ def get_n_mas_chicos(n):
 
 n_mas_grandes = []
 def get_n_mas_grandes(n):
-    serieMax = varianza_pixels.copy()
+    serieMax = varianza_pixels.copy() #hacemos una copia para no modificar el original
     
     for j in range(n):
         n_mas_grandes.append(serieMax.idxmax())
         serieMax = serieMax.drop(serieMax.idxmax())  # Elimina el maximo y actualiza la Serie
     return n_mas_grandes
-    
+
+n_medianos = []
+
+def get_n_medianos(n):
+    serieMed = varianza_pixels.copy() #hacemos una copia para no modificar el original
+    serieMed = pd.DataFrame(serieMed)     # Convertir a DataFrame
+    serieMed_ordenado = serieMed.sort_values(by='std') #ordenamos de acuerdo al 'std'
+    mediana_index = len(serieMed_ordenado) // 2 #calculamos mediana
+    iterador = n-1 // 2 #resto uno para no tener en cuenta la mediana
+    i = 1
+    mediana = serieMed_ordenado.iloc[mediana_index]['std']
+    n_medianos.append( serieMed_ordenado.index[mediana_index])
+   
+    while i < iterador:
+        # Obtener el nombre del índice anterior a la mediana
+        indice_anterior = serieMed_ordenado.index[mediana_index - i] if mediana_index > 0 else None
+        indices_medianos.append(indice_anterior)
+        # Obtener el nombre del índice siguiente a la mediana
+        indice_siguiente = serieMed_ordenado.index[mediana_index + i] if mediana_index < len(serieMed_ordenado) - 1 else None
+        n_medianos.append(indice_siguiente)
+        i += 1
+    return n_medianos
+
 def KNN_AtributosVariables_menorVariabilidad():
     k = 5
     scores = []
     nro_atributos = []
-    for n in range(1,50):
+    for n in range(1,21):
         k = 5
         neigh = KNeighborsClassifier(n_neighbors= k) #iniciamos el modelo
         atributos = get_n_mas_chicos(n)
@@ -167,9 +189,10 @@ def KNN_AtributosVariables_menorVariabilidad():
     
     plt.scatter(nro_atributos, scores, label='Scores', color = 'red', s = 20)
     plt.plot(nro_atributos, scores, color='red', linestyle='--', label='Línea de Tendencia')
-    plt.title('')
+    plt.title('Score en función de la cantidad de atributos con menor variabilidad')
     plt.xlabel('Cantidad de atributos')
     plt.ylabel('Score')
+    plt.grid(True) #agregamos cuadricula para que sea mas facil visualizar
     plt.show()
 
   
@@ -177,7 +200,7 @@ def KNN_AtributosVariables_mayorVariabilidad():
     k = 5
     scores = []
     nro_atributos = []
-    for n in range(1,50):
+    for n in range(1,21):
         k = 5
         neigh = KNeighborsClassifier(n_neighbors= k) #iniciamos el modelo
         atributos = get_n_mas_grandes(n)
@@ -190,8 +213,33 @@ def KNN_AtributosVariables_mayorVariabilidad():
    
     plt.scatter(nro_atributos, scores, label='Scores', color = 'violet', s = 20)
     plt.plot(nro_atributos, scores, color='violet', linestyle='--', label='Línea de Tendencia')
-    plt.title('')
+    plt.title('Score en función de la cantidad de atributos con mayor variabilidad')
     plt.xlabel('Cantidad de atributos')
     plt.ylabel('Score')
+    plt.grid(True) #agregamos cuadricula para que sea mas facil visualizar
     plt.show()
  
+
+def KNN_AtributosVariables_variabilidadMedia():
+    k = 5
+    scores = []
+    nro_atributos = []
+    for n in range(1,21):
+        k = 5
+        neigh = KNeighborsClassifier(n_neighbors= k) #iniciamos el modelo
+        atributos = get_n_medianos(n)
+        neigh.fit(X_train[atributos],y_train) #entrenamos seleccionado tres atributos
+        score = neigh.score(X_test[atributos],y_test) #evaluamos
+        scores.append(score)
+        nro_atributos.append(n)
+        
+    #ahora graficamos los obtenido
+   
+    plt.scatter(nro_atributos, scores, label='Scores', color = 'green', s = 20)
+    plt.plot(nro_atributos, scores, color='green', linestyle='--', label='Línea de Tendencia')
+    plt.title('Score en función de la cantidad de atributos con variabilidad media')
+    plt.xlabel('Cantidad de atributos')
+    plt.ylabel('Score')
+    plt.grid(True) #agregamos cuadricula para que sea mas facil visualizar
+    plt.show()
+     
