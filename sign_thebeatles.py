@@ -109,14 +109,27 @@ exp1.grafico_k_variable()
 
 exp1.cross_validation()
 
+
 #%%
 ##############################################################################
 #                       Experiencia 2
 ##############################################################################
 
-#Probamos distintos conjuntos de tres atributos teniendo en cuenta la variabilidad:
+#De analisis realizado, se muestra a continuacion promedio de exactitud obtenido para
+#distintas variabilidades para un k fijo y cantidad de atributos fijos
+
+exp2.KNN_Natributos_Variabilidad_Kfijo() #muestra para k=5 y atributos = 3
+#%%
+
+#De la experiencia realizada Obtuvimos los siguientes graficos
+exp2.grafico_k_variable() #muestra grafico de score obtenido por variabilidad al variar k
+exp2.grafico_atributos_variables()#muestra grafico de score obteniddo al variar la cantidad de atributos, con k = 5
 
 
+#%%
+#Una vez determinado el mejor modelo
+
+exp2.performance_mejor_modelo()#muestra el resultado de evaluar el mejor modelo y su matriz de confusion
 
 #%%=============================================================================
 #CLASIFICACIÓN MULTICLASE
