@@ -174,7 +174,24 @@ def grafico_k_variable():
 grafico_k_variable()
 
 
-#%% Graficamos para comparar mejor
+#%%
+#Ahora calculamos la performance del modelo
+#Con base a lo analizado y representado en los graficos, tomamos como hiperparametros k = 7 y cant de atributos 3, con variabilidad intermedia
+mejor_modelo = KNeighborsClassifier(n_neighbors=7)
+atributos = get_3conjuntosNpixeles_variabilidad(3)['intermedia']  # Extraer solo los nombres de columnas
+mejor_modelo.fit(X_train[atributos], y_train)
+
+y_pred = mejor_modelo.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Mejor modelo: {mejor_modelo}, Exactitud:{accuracy} ")
+
+# Calculamos el informe de clasificación en el conjunto de eval o test
+classification_rep_test = classification_report(y_test, y_pred)
+
+# Imprimimos las métricas del mejor modelo para saber todos sus datos
+print("Informe de clasificación en conjunto de test:")
+print(classification_rep_test)
+
 
 
     
