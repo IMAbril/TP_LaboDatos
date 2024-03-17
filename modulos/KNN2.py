@@ -101,10 +101,12 @@ def KNN_Natributos_distintavariabilidad_kfijo(k, n):
         modelos = pd.concat([modelos, modelo_df], ignore_index=True)
     return modelos        
 
-#Ajustamos un modelo de KNN para cada conjunto de 3 atributos y comparamos 
-modelos_3atributos = KNN_Natributos_distintavariabilidad_kfijo(5,3) #De acá se obtiene que el mejor modelo es el de variabilidad intermedia
-print("-------------Métricas obtenidas con validación cruzada de modelos de 3 atributos distintos------------------ ")
-print(modelos_3atributos[['variabilidad','mean_score']])
+
+def KNN_Natributos_Variabilidad_Kfijo():
+    #Ajustamos un modelo de KNN para cada conjunto de 3 atributos y comparamos 
+    modelos_3atributos = KNN_Natributos_distintavariabilidad_kfijo(5,3) #De acá se obtiene que el mejor modelo es el de variabilidad intermedia
+    print("-------------Métricas obtenidas con validación cruzada de modelos de 3 atributos distintos------------------ ")
+    print(modelos_3atributos[['variabilidad','mean_score']])
 
 #%%
 #Ahora vamos a ir variando la cantidad de atributos tomados de 1 a 20 
