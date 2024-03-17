@@ -174,24 +174,42 @@ def grafico_k_variable():
 grafico_k_variable()
 
 
+
 #%%
 #Ahora calculamos la performance del modelo
 #Con base a lo analizado y representado en los graficos, tomamos como hiperparametros k = 7 y cant de atributos 3, con variabilidad intermedia
-mejor_modelo = KNeighborsClassifier(n_neighbors=7)
-atributos = get_3conjuntosNpixeles_variabilidad(3)['intermedia']  # Extraer solo los nombres de columnas
-mejor_modelo.fit(X_train[atributos], y_train)
+def performance_mejor_modelo():
+    mejor_modelo = KNeighborsClassifier(n_neighbors=7)
+    atributos = get_3conjuntosNpixeles_variabilidad(3)['intermedia']  # Extraer solo los nombres de columnas
+    mejor_modelo.fit(X_train[atributos], y_train)
+    
+    y_pred = mejor_modelo.predict(X_test[atributos])
+    accuracy = accuracy_score(y_test, y_pred)
+    print(f"Mejor modelo: {mejor_modelo}, Exactitud:{accuracy} ")
+    
+    # Calculamos el informe de clasificación en el conjunto de eval o test
+    classification_rep_test = classification_report(y_test, y_pred)
+    
+    # Imprimimos las métricas del mejor modelo para saber todos sus datos
+    print("Informe de clasificación en conjunto de test:")
+    print(classification_rep_test)
+    
+    conf_mat_test = confusion_matrix(y_test, y_pred)
+    
+    # Creamos un DataFrame para la matriz de confusión con etiquetas personalizadas
+    conf_mat_df = pd.DataFrame(conf_mat_test, index=['Letra A','Letra L'], columns=['Letra A', 'Letra L'])
+    
+    # Creamos un heatmap de la matriz de confusión
+    sns.heatmap(conf_mat_df, annot=True, fmt='d', cmap='viridis', cbar=False, linewidths=0.5, linecolor='black')
+    
+    # Añadimos etiquetas y título
+    plt.title('Matriz de Confusión del Mejor Modelo')
+    plt.xlabel('Predicción')
+    plt.ylabel('Valores reales')
+    
+    plt.show()
 
-y_pred = mejor_modelo.predict(X_test)
-accuracy = accuracy_score(y_test, y_pred)
-print(f"Mejor modelo: {mejor_modelo}, Exactitud:{accuracy} ")
-
-# Calculamos el informe de clasificación en el conjunto de eval o test
-classification_rep_test = classification_report(y_test, y_pred)
-
-# Imprimimos las métricas del mejor modelo para saber todos sus datos
-print("Informe de clasificación en conjunto de test:")
-print(classification_rep_test)
-
+performance_mejor_modelo()
 
 
     
