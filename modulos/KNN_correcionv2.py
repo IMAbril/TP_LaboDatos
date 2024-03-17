@@ -118,6 +118,28 @@ def KNN_NAtributos_distintaVariabilidad_kfijo(k):
 
 modelos_porCantAtributos = KNN_NAtributos_distintaVariabilidad_kfijo(5)
 
+def grafico_atributos_variables():
+    # Filtramos el DataFrame para obtener los datos de cada serie que vamos a graficar
+    var_intermedia = modelos_porCantAtributos[modelos_porCantAtributos['variabilidad'] == 'intermedia']
+    var_mayor = modelos_porCantAtributos[modelos_porCantAtributos['variabilidad'] == 'mayor']
+    var_menor = modelos_porCantAtributos[modelos_porCantAtributos['variabilidad'] == 'menor']
+    
+    # Ajustamos el tamaño del gráfico
+    plt.figure(figsize=(10, 6))
+   
+    plt.plot(var_intermedia['cantAtributos'], var_intermedia['mean_score'], label='Variabilidad Intermedio')
+    plt.plot(var_mayor['cantAtributos'], var_mayor['mean_score'], label='Variabilidad Mayor')
+    plt.plot(var_menor['cantAtributos'], var_menor['mean_score'], label='Variabilidad Menor')
+    
+    
+    plt.title('Score en función de la cantidad de atributos con diferentes niveles de variabilidad')
+    plt.xlabel('Cantidad de atributos')
+    plt.ylabel('Score')
+    plt.legend()
+    plt.grid(True)  # agregamos cuadrícula para que sea más fácil visualizar
+    plt.show()
+grafico_atributos_variables()    
+
 #%%
 #Ahora variamos el k de 1 a 20, con cantidad de atributos fija igual a 3
 
