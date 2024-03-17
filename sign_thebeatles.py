@@ -13,7 +13,7 @@ Contenido : En las siguientes lineas se encuentra el proceso llevado a cabo y do
 # IMPORT módulos 
 # =============================================================================
 import pandas as pd
-from modulos import KNN_correccion as KNN, exploracion, ArbolesDecision_corregido as Arbol
+from modulos import KNN as exp1, KNN2 as exp2, exploracion, ArbolesDecision_corregido as Arbol
 #%% =============================================================================
 # Cargamos los datos
 # =============================================================================
@@ -54,53 +54,70 @@ exploracion.comparar_E_L() #Compara dos letras distintas
 #===============================================================================
 #Nos propusimos crear un modelo que clasificara si una letra era la letra A o la letra L
 
+#%%
+"""ACLARACION : Debido a una duda que surgió a partir de la corrección, realizamos dos experiencias
+Las diferencias se detallan en Readme.md
+"""
+#%%
+##############################################################################
+#              Experiencia 1
+###############################################################################
 #Primero nos fijamos la proporción de muestras de cada letra
 
-KNN.muestras() #Imprime las cantidad de muestras
+exp1.muestras() #Imprime las cantidad de muestras
 
 #Vemos el comportamiento de ambas clases analizando sus componentes principales
-KNN.comparar_A_L()
-
+exp1.comparar_A_L()
 
 #%%
 #Luego nos propusimos investigar que conjuntos  de atributos eran mejores para evaluar los modelos
 #Para ello tuvimos en cuenta la variabilidad pixel a pixel
 #consideramos 3 atributos
 
-KNN.KNN_3Atributos_mayorVariabilidad() #Imprime score obtenido
+exp1.KNN_3Atributos_mayorVariabilidad() #Imprime score obtenido
 
-KNN.KNN_3Atributos_variabilidadMedia() #imprime score obtenido
+exp1.KNN_3Atributos_variabilidadMedia() #imprime score obtenido
 
-KNN.KNN_3Atributos_menorVariabilidad() #imprime score obtenido
+exp1.KNN_3Atributos_menorVariabilidad() #imprime score obtenido
 
 #%%
 #Despues hicimos lo mismo, pero variando la cantidad de atributos
 
-KNN.KNN_AtributosVariables_mayorVariabilidad()
+exp1.KNN_AtributosVariables_mayorVariabilidad()
 
-KNN.KNN_AtributosVariables_variabilidadMedia()
+exp1.KNN_AtributosVariables_variabilidadMedia()
 
-KNN.KNN_AtributosVariables_menorVariabilidad()
+exp1.KNN_AtributosVariables_menorVariabilidad()
 
 #A continuacion se muestra un grafico de lo obtenido
-KNN.grafico_atributos_variables()
+exp1.grafico_atributos_variables()
 
 #%%
 #Luego, variamos los valores de k, utilizando tres atributos
 
-KNN.KNN_k_variabilidadMayor()
+exp1.KNN_k_variabilidadMayor()
 
-KNN.KNN_k_variabilidadMedia()
+exp1.KNN_k_variabilidadMedia()
 
-KNN.KNN_k_variabilidadMenor()
+exp1.KNN_k_variabilidadMenor()
 
 #A continuacion se muestra un grafico de lo obtenido
-KNN.grafico_k_variable()
+exp1.grafico_k_variable()
 
 #%%
 #Por ultimo, realizamos cross validation para elegir el mejor modelo
 
-KNN.cross_validation()
+exp1.cross_validation()
+
+#%%
+##############################################################################
+#                       Experiencia 2
+##############################################################################
+
+#Probamos distintos conjuntos de tres atributos teniendo en cuenta la variabilidad:
+
+
+
 #%%=============================================================================
 #CLASIFICACIÓN MULTICLASE
 #===============================================================================
@@ -118,3 +135,5 @@ Arbol.profundidad_arbol()
 #se imprimen las profundidades, score y una matriz de confusion
 #Además se obtiene el gráfico de la Matriz de confusion
 
+
+#%%
